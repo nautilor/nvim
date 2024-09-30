@@ -40,8 +40,11 @@ return require('packer').startup(function(use)
   -- Make color and syntax highlight better
   use('nvim-treesitter/nvim-treesitter', {run = 'TSUpdate'})
 
-  -- Statusbar and bufferline all in one place
-  use('ojroques/nvim-hardline')
+  -- statusline & bufferline
+  use {
+	  'nvim-lualine/lualine.nvim',
+	  requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
 
   -- Add a terminal like in vscode
   use {"akinsho/toggleterm.nvim", tag = '*', config = function()
