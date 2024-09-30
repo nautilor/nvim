@@ -29,6 +29,14 @@ return require('packer').startup(function(use)
 	  end,
   })
 
+  -- Neofusion colorscheme
+  use ({
+	  "diegoulloao/neofusion.nvim",
+	  config = function()
+		  require("neofusion").setup()
+	  end,
+  })
+
   -- Make color and syntax highlight better
   use('nvim-treesitter/nvim-treesitter', {run = 'TSUpdate'})
 
