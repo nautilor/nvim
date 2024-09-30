@@ -14,6 +14,12 @@ return require('packer').startup(function(use)
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+  -- Telescope File browser
+  use {
+	  "nvim-telescope/telescope-file-browser.nvim",
+	  requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+  }
+
   -- Everforest colorscheme
   use({
 	  "neanias/everforest-nvim",
