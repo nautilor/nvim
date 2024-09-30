@@ -26,4 +26,6 @@ mappings:
 - <leader>fb -> telescope extensions file browser
 - <leader>tt -> toggle terminal
 - <C-t>      -> toggle terminal
+- <C-j>      -> next autocomplete item
+- <C-k>      -> previous autocomplete item
 ```

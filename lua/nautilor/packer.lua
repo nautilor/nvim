@@ -42,4 +42,22 @@ return require('packer').startup(function(use)
 
   use("lewis6991/gitsigns.nvim")
 
+  -- Linter
+  use('mfussenegger/nvim-lint')
+
+  -- LSP in general
+  use {
+	  "williamboman/mason.nvim",
+	  "williamboman/mason-lspconfig.nvim",
+	  "neovim/nvim-lspconfig",
+  }
+
+  -- Autocomplete
+  use {
+	  "hrsh7th/nvim-cmp",
+	  "hrsh7th/cmp-buffer",
+	  "hrsh7th/cmp-path",
+	  "hrsh7th/cmp-nvim-lsp",
+  }
+
 end)
