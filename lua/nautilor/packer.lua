@@ -40,6 +40,7 @@ return require('packer').startup(function(use)
 	  require("toggleterm").setup()
   end}
 
+  -- Git blame in line
   use("lewis6991/gitsigns.nvim")
 
   -- Linter
