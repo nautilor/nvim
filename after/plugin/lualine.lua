@@ -2,7 +2,7 @@ local palette = require("neofusion.palette")
 
 require("lualine").setup({
 	options = {
-		theme = "neofusion"
+		theme = "auto"
 	},
 	sections = {
 		lualine_a = {'mode'},
