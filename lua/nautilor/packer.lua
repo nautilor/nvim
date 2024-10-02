@@ -72,4 +72,30 @@ return require('packer').startup(function(use)
 	  "hrsh7th/cmp-nvim-lsp",
   }
 
+  -- Autopairs plugins for various characters
+  use {
+	  "windwp/nvim-autopairs",
+	  event = "InsertEnter",
+	  config = function()
+		  require("nvim-autopairs").setup {}
+	  end
+  }
+
+  -- Autotag to help with html/htmlx/etc... tags
+  use { 
+	  "windwp/nvim-ts-autotag",
+	  config = function()
+		  require("nvim-ts-autotag").setup {}
+	  end
+  }
+	
+  -- Formatter
+  use({
+    "stevearc/conform.nvim",
+    config = function()
+      require("conform").setup()
+    end,
+  })
+
 end)
+

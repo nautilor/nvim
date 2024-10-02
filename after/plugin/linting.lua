@@ -1,5 +1,7 @@
 require("lint").linters_by_ft = {
-	python = { 'flake8' }
+	python = { 'flake8' },
+	javascript = { 'eslint_d' },
+	typescript = { 'eslint_d' }
 }
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {

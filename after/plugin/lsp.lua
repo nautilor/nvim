@@ -12,7 +12,8 @@ require("mason").setup({
 -- Make sure that the lsp server are installed automatically
 require("mason-lspconfig").setup({
 	ensure_installed = {
-		"pyright"
+		"pyright",
+		"eslint"
 	},
 	automatic_installation = true,
 })
@@ -44,5 +45,9 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- Configure all the lsp servers installed
 local lspconfig = require("lspconfig")
 lspconfig.pyright.setup({
+	capabilities = capabilities
+})
+
+lspconfig.eslint.setup({
 	capabilities = capabilities
 })
