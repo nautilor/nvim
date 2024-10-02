@@ -28,4 +28,5 @@ mappings:
 - <C-t>      -> toggle terminal
 - <C-j>      -> next autocomplete item
 - <C-k>      -> previous autocomplete item
+- <leader>fc -> format visual selection or buffer
 ```
