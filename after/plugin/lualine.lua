@@ -1,8 +1,7 @@
-local palette = require("neofusion.palette")
 
 require("lualine").setup({
 	options = {
-		theme = "auto"
+		theme = "catppuccin"
 	},
 	sections = {
 		lualine_a = {'mode'},
@@ -21,17 +20,7 @@ require("lualine").setup({
 				symbols = { 
 					alternate_file = "",
 					modified = " ●",
-				},
-				buffers_color = {
-					active = { 
-						bg = palette.light0,
-						fg = palette.dark0
-					},
-					inactive = {
-						bg = palette.light4,
-						fg = palette.light0
-					}
-				},
+				},	
 			},
 		},
 	},

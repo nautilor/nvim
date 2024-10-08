@@ -37,6 +37,9 @@ return require('packer').startup(function(use)
 	  end,
   })
 
+	-- Catpuccin
+	use { "catppuccin/nvim", as = "catppuccin" }
+
   -- Make color and syntax highlight better
   use('nvim-treesitter/nvim-treesitter', {run = 'TSUpdate'})
 
