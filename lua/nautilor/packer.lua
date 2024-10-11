@@ -40,6 +40,9 @@ return require('packer').startup(function(use)
 	-- Catpuccin
 	use { "catppuccin/nvim", as = "catppuccin" }
 
+	-- Gruvbox
+	use { "nautilor/gruvbox-darker.nvim" }
+
   -- Make color and syntax highlight better
   use('nvim-treesitter/nvim-treesitter', {run = 'TSUpdate'})
 
@@ -107,6 +110,14 @@ return require('packer').startup(function(use)
 			require("typescript-tools").setup {}
 		end,
 	}
+
+	-- Comment hightlight
+	use {
+  'nautilor/better-comments',
+  config = function()
+    require('better-comments').setup()
+  end
+}
 
 end)
 
