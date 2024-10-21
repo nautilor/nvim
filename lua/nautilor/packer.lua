@@ -10,7 +10,6 @@ return require('packer').startup(function(use)
   -- Telescope FZF
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.8',
-	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
@@ -21,27 +20,46 @@ return require('packer').startup(function(use)
   }
 
   -- Everforest colorscheme
-  use({
+  use{
 	  "neanias/everforest-nvim",
-	  -- Optional; default configuration will be used if setup isn't called.
 	  config = function()
 		  require("everforest").setup()
 	  end,
-  })
+  }
 
   -- Neofusion colorscheme
-  use ({
+  use {
 	  "diegoulloao/neofusion.nvim",
 	  config = function()
 		  require("neofusion").setup()
 	  end,
-  })
+  }
 
 	-- Catpuccin
 	use { "catppuccin/nvim", as = "catppuccin" }
 
 	-- Gruvbox
 	use { "nautilor/gruvbox-darker.nvim" }
+
+	-- Solarized
+	use { "svrana/neosolarized.nvim",
+				requires = { "tjdevries/colorbuddy.nvim" },
+				config = function()
+					require("neosolarized").setup({
+						comment_italics = true,
+						background_set = true
+					})
+				end,
+			}
+
+	use { 
+				'navarasu/onedark.nvim',
+				config = function()
+					require('onedark').setup {
+						style = 'darker'
+					}
+				end
+			}
 
   -- Make color and syntax highlight better
   use('nvim-treesitter/nvim-treesitter', {run = 'TSUpdate'})
@@ -96,12 +114,12 @@ return require('packer').startup(function(use)
   }
 	
   -- Formatter
-  use({
+  use{
     "stevearc/conform.nvim",
     config = function()
       require("conform").setup()
     end,
-  })
+  }
 
 	use {
 		"pmizio/typescript-tools.nvim",
@@ -113,11 +131,11 @@ return require('packer').startup(function(use)
 
 	-- Comment hightlight
 	use {
-  'nautilor/better-comments',
-  config = function()
-    require('better-comments').setup()
-  end
-}
+		'nautilor/better-comments',
+		config = function()
+			require("better-comments").setup()
+		end
+	}
 
 end)
 

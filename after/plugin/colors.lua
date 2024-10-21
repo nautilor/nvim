@@ -1,4 +1,4 @@
-color = color or "gruvbox"
+color = color or "onedark"
 vim.o.background = "dark"
 vim.cmd.colorscheme(color)
 

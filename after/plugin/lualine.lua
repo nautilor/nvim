@@ -1,7 +1,7 @@
 
 require("lualine").setup({
 	options = {
-		theme = "gruvbox"
+		theme = "onedark"
 	},
 	sections = {
 		lualine_a = {'mode'},
