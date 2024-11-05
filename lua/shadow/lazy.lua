@@ -15,9 +15,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
-require("shadow.remap")
-require("shadow.nvim-config")
+require("shadow.core")
 
 -- Dependencies
 require("lazy").setup("shadow.plugins")
