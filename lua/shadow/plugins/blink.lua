@@ -1,7 +1,7 @@
 return {
 	"saghen/blink.cmp",
-	dependencies = {'rafamadriz/friendly-snippets'},
-	event = {"LspAttach"},
+	dependencies = { 'rafamadriz/friendly-snippets' },
+	event = { "LspAttach" },
 	version = 'v0.*',
 	opts = {
 		keymap = { preset = 'enter' },
@@ -10,4 +10,3 @@ return {
 		}
 	}
 }
-

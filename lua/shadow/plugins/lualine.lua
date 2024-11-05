@@ -11,7 +11,7 @@ return {
 			lualine_b = { 'branch', 'diff', 'diagnostics' },
 			lualine_c = { 'filename' },
 			lualine_x = { 'filetype' },
-			lualine_y = {'progress'},
+			lualine_y = { 'progress' },
 			lualine_z = { { 'location', separator = { right = '' }, left_padding = 2 } }
 		},
 		tabline = {
@@ -20,10 +20,10 @@ return {
 					"buffers",
 					separator = { left = "", right = "" }, -- right = "" },
 					right_padding = 0,
-					symbols = { 
+					symbols = {
 						alternate_file = "",
 						modified = " ●",
-					},	
+					},
 				},
 			},
 		},

@@ -4,7 +4,7 @@ return {
 		'echasnovski/mini.icons',
 		'nvim-lua/plenary.nvim'
 	},
-	config = function(_, opts)
+	config = function()
 		local alpha = require('alpha')
 		local dashboard = require('alpha.themes.dashboard')
 		dashboard.section.header.val = {

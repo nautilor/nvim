@@ -1,7 +1,7 @@
 return {
 	'neovim/nvim-lspconfig',
 	dependencies = { 'saghen/blink.cmp' },
-	config = function(_, opts)
+	config = function()
 		local lspconfig = require('lspconfig')
 		local blink = require("blink.cmp")
 		lspconfig.pyright.setup({
