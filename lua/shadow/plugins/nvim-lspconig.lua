@@ -10,6 +10,9 @@ return {
 		lspconfig.eslint.setup({
 			capabilities = blink.get_lsp_capabilities(lspconfig.eslint.capabilities)
 		})
+		lspconfig.ts_ls.setup({
+			capabilities = blink.get_lsp_capabilities(lspconfig.ts_ls.capabilities)
+		})
 		lspconfig.lua_ls.setup({
 			capabilities = blink.get_lsp_capabilities(lspconfig.lua_ls.capabilities),
 			settings = {
