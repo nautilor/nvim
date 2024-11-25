@@ -23,5 +23,6 @@
   "oil.nvim": { "branch": "master", "commit": "8ea40b5506115b6d355e304dd9ee5089f7d78601" },
   "plenary.nvim": { "branch": "master", "commit": "2d9b06177a975543726ce5c73fca176cedbffe9d" },
   "precognition.nvim": { "branch": "main", "commit": "0189e8d6f96275a079b2805d68d49414871885cd" },
-  "telescope.nvim": { "branch": "master", "commit": "85922dde3767e01d42a08e750a773effbffaea3e" }
+  "telescope.nvim": { "branch": "master", "commit": "85922dde3767e01d42a08e750a773effbffaea3e" },
+  "tiny-inline-diagnostic.nvim": { "branch": "main", "commit": "c39c4af4e6500effb17eeaaa2306dd0bb75afd62" }
 }

@@ -5,6 +5,7 @@ return {
 		vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename)
 	end,
 	config = function()
+		vim.diagnostic.config({ virtual_text = false })
 		local lspconfig = require('lspconfig')
 		local blink = require("blink.cmp")
 		lspconfig.pyright.setup({
