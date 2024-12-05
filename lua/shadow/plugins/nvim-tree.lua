@@ -6,6 +6,7 @@ return {
 	-- useful to define keymap shortcuts
 	init = function()
 		vim.keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>")
+		vim.keymap.set({ "i", "n" }, "<C-e>", "<cmd>NvimTreeToggle<CR>")
 	end,
 	-- options that you will normally parse to .setup({})
 	opts = {
@@ -41,4 +42,7 @@ return {
 			},
 		}
 	},
+	config = function(_, opts)
+		require("nvim-tree").setup(opts)
+	end
 }
