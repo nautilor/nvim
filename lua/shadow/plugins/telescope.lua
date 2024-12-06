@@ -15,5 +15,15 @@ return {
 		defaults = {
 			prompt_prefix = "   ",
 		},
+		pickers = {
+			find_files = {
+				hidden = true,
+				file_ignore_patterns = { ".git/", "node_modules/" },
+			},
+			live_grep = {
+				hidden = true,
+				file_ignore_patterns = { ".git/", "node_modules/" },
+			},
+		},
 	}
 }
