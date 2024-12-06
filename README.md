@@ -87,6 +87,7 @@ The main configuration files are located in the `lua/shadow/core` directory:
 | "n"               | "\<C-p>"      | "\\"+p"                                                    |
 | "v"               | "\<C-y>"      | "\\"+y"                                                    |
 | "v"               | "\<C-p>"      | "\\"+p"                                                    |
+| "n"               | "\<C-l>"      | "\<cmd>LazyGit\<CR>"                                       |
 
 ## Contributing
 
