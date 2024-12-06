@@ -80,6 +80,7 @@ The main configuration files are located in the `lua/shadow/core` directory:
 | "t"               | "\<Esc>"      | [[<C-\\>\<C-n>]]                                           |
 | "i"               | "jj"          | "\<ESC>", { silent = true }                                |
 | "n"               | "\<leader>q"  | "\<cmd>q\<CR>"                                             |
+| "n"               | "\<leader>!"  | "\<cmd>q!\<CR>"                                             |
 | "n"               | "\<C-s>"      | "\<cmd>w\<CR>"                                             |
 | "n"               | "\<leader>sv" | "\<cmd>source $MYVIMRC\<CR>"                               |
 | "n"               | "\<C-j>"      | "i"                                                        |
