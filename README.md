@@ -56,7 +56,7 @@ The main configuration files are located in the `lua/shadow/core` directory:
 | Mode              | Keybind              | Command                                                    |
 | ----------------- | -------------        | ---------------------------------------------------------- |
 | "n"               | "\<leader>r"         | vim.lsp.buf.rename                                         |
-| "n"               | "\<leader>ee"        | "\<cmd>NvimTreeToggle\<CR>"                                |
+| "n"               | "\<leader>e"         | "\<cmd>NvimTreeToggle\<CR>"                                |
 | "n"               | "\<leader>hh"        | "\<cmd>lua require("harpoon.mark").add_file()\<CR>"        |
 | "n"               | "\<leader>mm"        | "\<cmd>lua require("harpoon.ui").toggle_quick_menu()\<CR>" |
 | "n"               | "\<leader>nn"        | "\<cmd>lua require("harpoon.ui").nav_next()\<CR>"          |
@@ -64,7 +64,7 @@ The main configuration files are located in the `lua/shadow/core` directory:
 | "n"               | "-"                  | "\<cmd>Oil\<CR>"                                           |
 | "n"               | "\<leader>gp"        | "\<cmd>Gitsign preview_hunk\<CR>"                          |
 | {"n", "v"}        | "\<leader>fc"        | function                                                   |
-| "n"               | "\<leader>ff"        | "\<cmd>Telescope find_files\<CR>"                          |
+| "n"               | "\<leader>\<tab>"    | "\<cmd>Telescope find_files\<CR>"                          |
 | "n"               | "\<leader>fg"        | "\<cmd>Telescope live_grep\<CR>"                           |
 | "n"               | "\<leader>bb"        | "\<cmd>Telescope buffers\<CR>"                             |
 | "n"               | "\<leader>gd"        | "\<cmd>Telescope lsp_definitions\<CR>"                     |
