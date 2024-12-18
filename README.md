@@ -90,6 +90,10 @@ The main configuration files are located in the `lua/shadow/core` directory:
 | "v"               | "\<C-y>"             | "\\"+y"                                                    |
 | "v"               | "\<C-p>"             | "\\"+p"                                                    |
 | "n"               | "\<C-l>"             | "\<cmd>LazyGit\<CR>"                                       |
+| "n"               | "\<A-h>"             | "\<cmd>Treewalker Left\<CR>"                               |
+| "n"               | "\<A-j>"             | "\<cmd>Treewalker Down\<CR>"                               |
+| "n"               | "\<A-k>"             | "\<cmd>Treewalker Up\<CR>"                                 |
+| "n"               | "\<A-l>"             | "\<cmd>Treewalker Right\<CR>"                              |
 
 ## Contributing
 

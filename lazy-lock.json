@@ -26,5 +26,6 @@
   "precognition.nvim": { "branch": "main", "commit": "0189e8d6f96275a079b2805d68d49414871885cd" },
   "telescope.nvim": { "branch": "master", "commit": "85922dde3767e01d42a08e750a773effbffaea3e" },
   "tiny-inline-diagnostic.nvim": { "branch": "main", "commit": "c39c4af4e6500effb17eeaaa2306dd0bb75afd62" },
-  "toggleterm.nvim": { "branch": "main", "commit": "022ff5594acccc8d90d2e46dc43994f7722ebdf7" }
+  "toggleterm.nvim": { "branch": "main", "commit": "022ff5594acccc8d90d2e46dc43994f7722ebdf7" },
+  "treewalker.nvim": { "branch": "main", "commit": "efc57a4c3d91920fd03dbd602dfdf936de50e172" }
 }
