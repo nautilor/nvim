@@ -11,10 +11,20 @@ return {
 		vim.keymap.set({ "i", "n" }, "<C-f>", "<cmd>Telescope live_grep<CR>")
 		vim.keymap.set({ "i", "n" }, "<C-b>", "<cmd>Telescope buffers<CR>")
 		vim.keymap.set({ "i", "n" }, "<C-g>", "<cmd>Telescope lsp_definitions<CR>")
+		vim.keymap.set({ "i", "n" }, "<C-f>", "<cmd>Telescope oldfiles<CR>")
 	end,
 	opts = {
 		defaults = {
 			prompt_prefix = "   ",
+			mappings = {
+				n = {
+					['<c-d>'] = require('telescope.actions').delete_buffer
+				}, -- n
+				i = {
+					["<C-h>"] = "which_key",
+					['<c-d>'] = require('telescope.actions').delete_buffer
+				} -- i
+			} -- mappings
 		},
 		pickers = {
 			find_files = {

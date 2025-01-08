@@ -14,18 +14,18 @@ return {
 			lualine_y = { 'progress' },
 			lualine_z = { { 'location', } } -- separator = { right = '' }, left_padding = 2 } }
 		},
-		tabline = {
-			lualine_a = {
-				{
-					"buffers",
-					separator = { left = "", right = "" }, -- right = "" },
-					right_padding = 0,
-					symbols = {
-						alternate_file = "",
-						modified = " ●",
-					},
-				},
-			},
-		},
+		--	tabline = {
+		--		lualine_a = {
+		--			{
+		--				"buffers",
+		--				separator = { left = "", right = "" }, -- right = "" },
+		--				right_padding = 0,
+		--				symbols = {
+		--					alternate_file = "",
+		--					modified = " ●",
+		--				},
+		--			},
+		--		},
+		--	},
 	}
 }

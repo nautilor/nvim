@@ -54,7 +54,7 @@ The main configuration files are located in the `lua/shadow/core` directory:
 ## Key Bindings
 
 | Mode              | Keybind              | Command                                                    |
-| ----------------- | -------------        | ---------------------------------------------------------- |
+| ----------------- | -------------------- | ---------------------------------------------------------- |
 | "n"               | "\<leader>r"         | vim.lsp.buf.rename                                         |
 | "n"               | "\<leader>e"         | "\<cmd>NvimTreeToggle\<CR>"                                |
 | "n"               | "\<leader>hh"        | "\<cmd>lua require("harpoon.mark").add_file()\<CR>"        |
@@ -69,6 +69,9 @@ The main configuration files are located in the `lua/shadow/core` directory:
 | "n"               | "\<leader>bb"        | "\<cmd>Telescope buffers\<CR>"                             |
 | "n"               | "\<leader>gd"        | "\<cmd>Telescope lsp_definitions\<CR>"                     |
 | "n"               | "\<leader>\<leader>" | "\<cmd>Telescope oldfiles\<CR>"                            |
+| "n"               | "\<C-d>"             | require('telescope.actions').delete_buffer                 |
+| "i"               | "\<C-d>"             | require('telescope.actions').delete_buffer                 |
+| "i"               | "\<C-h>"             | "which_key"                                                |
 | { "i", "n" }      | "\<C-o>"             | "\<cmd>Telescope find_files\<CR>"                          |
 | { "i", "n" }      | "\<C-f>"             | "\<cmd>Telescope live_grep\<CR>"                           |
 | { "i", "n" }      | "\<C-b>"             | "\<cmd>Telescope buffers\<CR>"                             |
@@ -78,7 +81,7 @@ The main configuration files are located in the `lua/shadow/core` directory:
 | "n"               | "\<tab>"             | vim.cmd.bnext                                              |
 | "n"               | "\<S-tab>"           | vim.cmd.bprevious                                          |
 | "n"               | "\<leader>bd"        | "\<cmd>bdelete!\<CR>"                                      |
-| "t"               | "\<Esc>"             | [[<C-\\>\<C-n>]]                                           |
+| "t"               | "\<Esc>"             | \[\[\<C-\\>\<C-n>\]\]                                      |
 | "i"               | "jj"                 | "\<ESC>", { silent = true }                                |
 | "n"               | "\<leader>q"         | "\<cmd>q\<CR>"                                             |
 | "n"               | "\<leader>!"         | "\<cmd>q!\<CR>"                                            |
