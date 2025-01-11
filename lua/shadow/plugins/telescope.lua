@@ -11,7 +11,7 @@ return {
 		vim.keymap.set({ "i", "n" }, "<C-f>", "<cmd>Telescope live_grep<CR>")
 		vim.keymap.set({ "i", "n" }, "<C-b>", "<cmd>Telescope buffers<CR>")
 		vim.keymap.set({ "i", "n" }, "<C-g>", "<cmd>Telescope lsp_definitions<CR>")
-		vim.keymap.set({ "i", "n" }, "<C-f>", "<cmd>Telescope oldfiles<CR>")
+		vim.keymap.set({ "i", "n" }, "<C-f>", "<cmd>Telescope live_grep<CR>")
 	end,
 	opts = {
 		defaults = {
