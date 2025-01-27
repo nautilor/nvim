@@ -17,6 +17,9 @@ return {
 		lspconfig.ts_ls.setup({
 			capabilities = blink.get_lsp_capabilities(lspconfig.ts_ls.capabilities)
 		})
+		lspconfig.clangd.setup({
+			capabilities = blink.get_lsp_capabilities(lspconfig.clangd.capabilities)
+		})
 		lspconfig.lua_ls.setup({
 			capabilities = blink.get_lsp_capabilities(lspconfig.lua_ls.capabilities),
 			settings = {
