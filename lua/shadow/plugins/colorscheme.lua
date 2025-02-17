@@ -2,7 +2,13 @@ return {
 	-- "ellisonleao/gruvbox.nvim",
 	"navarasu/onedark.nvim",
 	-- use darker version
-	opts = { style = 'dark', transparent = true },
+	opts = {
+		style = 'dark',
+		transparent = true,
+		lualine = {
+			transparent = true, -- lualine center bar transparency
+		},
+	},
 	init = function()
 		-- vim.g.gruvbox_contrast_dark = 'hard'
 		vim.cmd([[ set background=dark ]])
