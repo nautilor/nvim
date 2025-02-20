@@ -1,6 +1,6 @@
 return {
 	-- "ellisonleao/gruvbox.nvim",
-	"navarasu/onedark.nvim",
+	"nautilor/onedark.nvim",
 	-- use darker version
 	opts = {
 		style = 'dark',
