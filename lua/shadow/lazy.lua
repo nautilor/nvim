@@ -19,3 +19,5 @@ require("shadow.core")
 
 -- Dependencies
 require("lazy").setup("shadow.plugins")
+
+require("shadow.core.overrides")
