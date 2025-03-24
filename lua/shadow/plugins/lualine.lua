@@ -31,6 +31,9 @@ return {
 				{
 					"branch",
 				},
+				{
+					"diff",
+				}
 			},
 			lualine_c = {
 			},
