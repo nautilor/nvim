@@ -98,6 +98,7 @@ The main configuration files are located in the `lua/shadow/core` directory:
 | "n"               | "\<A-k>"             | "\<cmd>Treewalker Up\<CR>"                                 |
 | "n"               | "\<A-l>"             | "\<cmd>Treewalker Right\<CR>"                              |
 | "n"               | "\<leader>lc"        | "Toggle autocompiling for tex files"                       |
+| "n"               | "\<leader>/"         | "\<cmd>nohlsearch\<CR>"                                    |
 
 ## Contributing
 
