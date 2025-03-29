@@ -100,6 +100,8 @@ The main configuration files are located in the `lua/shadow/core` directory:
 | "n"               | "\<leader>lc"        | "Toggle autocompiling for tex files"                       |
 | "n"               | "\<leader>/"         | "\<cmd>nohlsearch\<CR>"                                    |
 
+> Note: used cinnamon.nvim for some smooth scrolling, you can find the keybindings in the cinnamon.lua file
+
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request on GitHub.
