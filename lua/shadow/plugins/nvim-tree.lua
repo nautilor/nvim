@@ -21,6 +21,15 @@ return {
 		view = {
 			width = 30,
 			preserve_window_proportions = true,
+			float = {
+				enable = true,
+				quit_on_focus_loss = true,
+				open_win_config = {
+					relative = "editor",
+					width = 30,
+					border = "rounded",
+				}
+			}
 		},
 		renderer = {
 			root_folder_label = false,
