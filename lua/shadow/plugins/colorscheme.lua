@@ -1,6 +1,7 @@
 return {
 	-- "ellisonleao/gruvbox.nvim",
-	"nautilor/onedark.nvim",
+	-- "nautilor/onedark.nvim",
+	"nautilor/gruvbox.nvim",
 	-- use darker version
 	opts = {
 		style = 'dark',
@@ -12,13 +13,13 @@ return {
 	init = function()
 		-- vim.g.gruvbox_contrast_dark = 'hard'
 		vim.cmd([[ set background=dark ]])
-		vim.cmd([[ colorscheme onedark ]])
+		vim.cmd([[ colorscheme gruvbox ]])
 		vim.opt.fillchars = { eob = " " }
 	end,
 	-- set colorscheme
 	config = function(_, opts)
-		require("onedark").setup(opts)
-		require("onedark").load()
-		vim.cmd([[ colorscheme onedark]])
+		require("gruvbox").setup(opts)
+		require("gruvbox").load()
+		vim.cmd([[ colorscheme gruvbox]])
 	end
 }
