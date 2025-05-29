@@ -5,10 +5,9 @@ return {
 		require('neoscroll').setup({
 			mappings = {
 				'<C-u>', '<C-d>',
-				'<C-y>', '<C-e>',
+				'<C-e>',
 				'zt', 'zz', 'zb',
 			},
 		})
 	end,
 }
-
