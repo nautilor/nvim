@@ -6,29 +6,21 @@ return {
 	end,
 	config = function()
 		vim.diagnostic.config({ virtual_text = false })
-		local lspconfig = require('lspconfig')
-		local blink = require("blink.cmp")
-		lspconfig.pyright.setup({
-			capabilities = blink.get_lsp_capabilities(lspconfig.pyright.capabilities)
-		})
-		lspconfig.eslint.setup({
-			capabilities = blink.get_lsp_capabilities(lspconfig.eslint.capabilities)
-		})
-		lspconfig.ts_ls.setup({
-			capabilities = blink.get_lsp_capabilities(lspconfig.ts_ls.capabilities)
-		})
-		lspconfig.clangd.setup({
-			capabilities = blink.get_lsp_capabilities(lspconfig.clangd.capabilities)
-		})
-		lspconfig.lua_ls.setup({
-			capabilities = blink.get_lsp_capabilities(lspconfig.lua_ls.capabilities),
-			settings = {
-				Lua = {
-					diagnostics = {
-						globals = { 'vim' }
+		vim.lsp.config('*', {
+			capabilities = {
+				textDocument = {
+					semanticTokens = {
+						multilineTokenSupport = true,
 					}
 				}
 			}
+		})
+		vim.lsp.enable({
+			"pyright",
+			"ts_ls",
+			"eslint",
+			"clangd",
+			"lua_ls"
 		})
 	end
 }
