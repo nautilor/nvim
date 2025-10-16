@@ -9,7 +9,7 @@ return {
 		options = {
 			component_separators = { left = "", right = "" },
 			section_separators = { left = "", right = "" },
-			theme = 'gruvbox',
+			theme = 'onedark',
 		},
 		sections = {
 			lualine_a = {

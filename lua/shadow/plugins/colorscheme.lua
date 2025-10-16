@@ -1,10 +1,10 @@
 return {
 	-- "ellisonleao/gruvbox.nvim",
-	-- "nautilor/onedark.nvim",
-	"nautilor/gruvbox.nvim",
+	"nautilor/onedark.nvim",
+	-- "nautilor/gruvbox.nvim",
 	-- use darker version
 	opts = {
-		style = 'dark',
+		style = 'deep',
 		transparent = true,
 		lualine = {
 			transparent = true, -- lualine center bar transparency
@@ -13,13 +13,13 @@ return {
 	init = function()
 		-- vim.g.gruvbox_contrast_dark = 'hard'
 		vim.cmd([[ set background=dark ]])
-		vim.cmd([[ colorscheme gruvbox ]])
+		vim.cmd([[ colorscheme onedark ]])
 		vim.opt.fillchars = { eob = " " }
 	end,
 	-- set colorscheme
 	config = function(_, opts)
-		require("gruvbox").setup(opts)
-		require("gruvbox").load()
-		vim.cmd([[ colorscheme gruvbox]])
+		require("onedark").setup(opts)
+		require("onedark").load()
+		vim.cmd([[ colorscheme onedark]])
 	end
 }
