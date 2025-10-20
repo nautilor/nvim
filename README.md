@@ -99,6 +99,7 @@ The main configuration files are located in the `lua/shadow/core` directory:
 | "n"               | "\<A-l>"             | "\<cmd>Treewalker Right\<CR>"                              |
 | "n"               | "\<leader>lc"        | "Toggle autocompiling for tex files"                       |
 | "n"               | "\<leader>/"         | "\<cmd>nohlsearch\<CR>"                                    |
+| "n"               | "\<C-i>/"            | "Toggle Dired"                                             |
 
 > Note: used cinnamon.nvim for some smooth scrolling, you can find the keybindings in the cinnamon.lua file
 
