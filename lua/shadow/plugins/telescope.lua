@@ -6,10 +6,10 @@ return {
 		vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<CR>")
 		vim.keymap.set("n", "<leader>bb", "<cmd>Telescope buffers<CR>")
 		vim.keymap.set("n", "<leader>gd", "<cmd>Telescope lsp_definitions<CR>")
-		vim.keymap.set("n", "<leader><leader>", "<cmd>Telescope oldfiles<CR>")
+		vim.keymap.set({ "i", "n" }, "<C-tab>", "<cmd>Telescope buffers<CR>")
 		vim.keymap.set({ "i", "n" }, "<C-o>", "<cmd>Telescope find_files<CR>")
 		vim.keymap.set({ "i", "n" }, "<C-f>", "<cmd>Telescope live_grep<CR>")
-		vim.keymap.set({ "i", "n" }, "<C-b>", "<cmd>Telescope buffers<CR>")
+		vim.keymap.set({ "i", "n" }, "<C-tab>", "<cmd>Telescope buffers<CR>")
 		vim.keymap.set({ "i", "n" }, "<C-g>", "<cmd>Telescope lsp_definitions<CR>")
 		vim.keymap.set({ "i", "n" }, "<C-f>", "<cmd>Telescope live_grep<CR>")
 	end,

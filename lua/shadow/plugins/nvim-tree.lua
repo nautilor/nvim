@@ -6,6 +6,7 @@ return {
 	-- useful to define keymap shortcuts
 	init = function()
 		vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>")
+		vim.keymap.set({ "i", "n" }, "<C-b>", "<cmd>NvimTreeToggle<CR>")
 	end,
 	-- options that you will normally parse to .setup({})
 	opts = {
