@@ -1,25 +1,24 @@
 return {
-	-- "ellisonleao/gruvbox.nvim",
-	"nautilor/onedark.nvim",
-	-- "nautilor/gruvbox.nvim",
-	-- use darker version
-	opts = {
-		style = 'deep',
-		transparent = true,
-		lualine = {
-			transparent = true, -- lualine center bar transparency
-		},
-	},
+	"catppuccin/nvim",
+	name = "catppuccin",
+	priority = 1000,
 	init = function()
-		-- vim.g.gruvbox_contrast_dark = 'hard'
-		vim.cmd([[ set background=dark ]])
-		vim.cmd([[ colorscheme onedark ]])
 		vim.opt.fillchars = { eob = " " }
 	end,
 	-- set colorscheme
 	config = function(_, opts)
-		require("onedark").setup(opts)
-		require("onedark").load()
-		vim.cmd([[ colorscheme onedark]])
+		require("catppuccin").setup({
+			flavour = "mocha",
+			background = {
+				light = "latte",
+				dark = "mocha"
+			},
+			transparent_background = true,
+			float = {
+				transparent = false, -- enable transparent floating windows
+				solid = true,    -- use solid styling for floating windows, see |winborder|
+			},
+		})
+		vim.cmd.colorscheme "catppuccin"
 	end
 }
