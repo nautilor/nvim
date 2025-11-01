@@ -21,6 +21,11 @@ return {
 				auto_show_delay_ms = 200,
 			},
 			ghost_text = { enabled = false },
+			sources = {
+				{ name = "lsp" },
+				{ name = "path" },
+				{ name = "buffer" },
+			},
 		}
 	}
 }

@@ -5,16 +5,6 @@ return {
 		vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename)
 	end,
 	config = function()
-		vim.diagnostic.config({ virtual_text = false })
-		vim.lsp.config('*', {
-			capabilities = {
-				textDocument = {
-					semanticTokens = {
-						multilineTokenSupport = true,
-					}
-				}
-			}
-		})
 		vim.lsp.enable({
 			"pyright",
 			"ts_ls",
