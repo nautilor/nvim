@@ -6,7 +6,7 @@ return {
 	config = function(_, opts)
 		local dired = require("dired")
 		dired.setup(opts)
-		vim.keymap.set("n", "<C-i>", function()
+		vim.keymap.set("n", "<C-n>", function()
 			-- Check if dired is running
 			for _, win in ipairs(vim.api.nvim_list_wins()) do
 				local buf = vim.api.nvim_win_get_buf(win)
@@ -17,8 +17,8 @@ return {
 				end
 			end
 
-			-- Se non è aperto, apri uno split orizzontale con Dired
+			-- Se non è aperto, apri dired
 			vim.cmd("Dired")
-		end, { desc = "Toggle Dired in horizontal split" })
+		end, { desc = "Toggle Dired" })
 	end
 }
