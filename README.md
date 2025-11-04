@@ -53,7 +53,7 @@ The main configuration files are located in the `lua/shadow/core` directory:
 
 ## Key Bindings
 
-Please take a look at [KEYMAPS](KEYMAPS.md)
+Please take a look at the [KEYMAP](KEYMAP.md) file
 
 ## Contributing
 
