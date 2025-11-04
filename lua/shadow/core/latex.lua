@@ -58,4 +58,6 @@ local function toggle_latex_compiler()
 end
 
 -- keymap to toggle the latex compiler
-vim.keymap.set('n', '<leader>lc', toggle_latex_compiler, { noremap = true, silent = true })
+local keymap = vim.keymap
+local opts = { noremap = true, silent = true }
+keymap.set('n', '<leader>lc', toggle_latex_compiler, opts)

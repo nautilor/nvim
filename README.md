@@ -53,55 +53,7 @@ The main configuration files are located in the `lua/shadow/core` directory:
 
 ## Key Bindings
 
-| Mode              | Keybind              | Command                                                    |
-| ----------------- | -------------------- | ---------------------------------------------------------- |
-| "n"               | "\<leader>r"         | vim.lsp.buf.rename                                         |
-| "n"               | "\<leader>e"         | "\<cmd>NvimTreeToggle\<CR>"                                |
-| {"i", "n"}        | "\<C-b>"             | "\<cmd>NvimTreeToggle\<CR>"                                |
-| "n"               | "\<leader>hh"        | "\<cmd>lua require("harpoon.mark").add_file()\<CR>"        |
-| "n"               | "\<leader>mm"        | "\<cmd>lua require("harpoon.ui").toggle_quick_menu()\<CR>" |
-| "n"               | "\<leader>nn"        | "\<cmd>lua require("harpoon.ui").nav_next()\<CR>"          |
-| "n"               | "\<leader>pp"        | "\<cmd>lua require("harpoon.ui").nav_prev()\<CR>"          |
-| "n"               | "-"                  | "\<cmd>Oil\<CR>"                                           |
-| "n"               | "\<leader>gp"        | "\<cmd>Gitsign preview_hunk\<CR>"                          |
-| {"n", "v"}        | "\<leader>fc"        | function                                                   |
-| "n"               | "\<leader>\<tab>"    | "\<cmd>Telescope find_files\<CR>"                          |
-| "n"               | "\<leader>fg"        | "\<cmd>Telescope live_grep\<CR>"                           |
-| "n"               | "\<leader>bb"        | "\<cmd>Telescope buffers\<CR>"                             |
-| "n"               | "\<leader>gd"        | "\<cmd>Telescope lsp_definitions\<CR>"                     |
-| "n"               | "\<leader>\<leader>" | "\<cmd>Telescope oldfiles\<CR>"                            |
-| "n"               | "\<C-d>"             | require('telescope.actions').delete_buffer                 |
-| "i"               | "\<C-d>"             | require('telescope.actions').delete_buffer                 |
-| "i"               | "\<C-h>"             | "which_key"                                                |
-| { "i", "n" }      | "\<C-o>"             | "\<cmd>Telescope find_files\<CR>"                          |
-| { "i", "n" }      | "\<C-f>"             | "\<cmd>Telescope live_grep\<CR>"                           |
-| { "i", "n" }      | "\<C-tab>"           | "\<cmd>Telescope buffers\<CR>"                             |
-| { "i", "n" }      | "\<C-g>"             | "\<cmd>Telescope lsp_definitions\<CR>"                     |
-| "n"               | "\<leader>tt"        | "\<cmd>ToggleTerm direction=float\<CR>"                    |
-| { "i", "n", "t" } | "\<C-t>"             | "\<cmd>ToggleTerm direction=float\<CR>"                    |
-| "n"               | "\<tab>"             | vim.cmd.bnext                                              |
-| "n"               | "\<S-tab>"           | vim.cmd.bprevious                                          |
-| "n"               | "\<leader>bd"        | "\<cmd>bdelete!\<CR>"                                      |
-| "t"               | "\<Esc>"             | \[\[\<C-\\>\<C-n>\]\]                                      |
-| "i"               | "jj"                 | "\<ESC>", { silent = true }                                |
-| "n"               | "\<leader>q"         | "\<cmd>q\<CR>"                                             |
-| "n"               | "\<leader>!"         | "\<cmd>q!\<CR>"                                            |
-| "n"               | "\<C-s>"             | "\<cmd>w\<CR>"                                             |
-| "n"               | "\<leader>sv"        | "\<cmd>source $MYVIMRC\<CR>"                               |
-| "n"               | "\<C-j>"             | "i"                                                        |
-| "n"               | "\<C-y>"             | "\\"+y"                                                    |
-| "n"               | "\<C-p>"             | "\\"+p"                                                    |
-| "v"               | "\<C-y>"             | "\\"+y"                                                    |
-| "v"               | "\<C-p>"             | "\\"+p"                                                    |
-| "n"               | "\<C-l>"             | "\<cmd>LazyGit\<CR>"                                       |
-| "n"               | "\<A-h>"             | "\<cmd>Treewalker Left\<CR>"                               |
-| "n"               | "\<A-j>"             | "\<cmd>Treewalker Down\<CR>"                               |
-| "n"               | "\<A-k>"             | "\<cmd>Treewalker Up\<CR>"                                 |
-| "n"               | "\<A-l>"             | "\<cmd>Treewalker Right\<CR>"                              |
-| "n"               | "\<leader>lc"        | "Toggle autocompiling for tex files"                       |
-| "n"               | "\<leader>/"         | "\<cmd>nohlsearch\<CR>"                                    |
-| "n"               | "\<C-i>"             | "Toggle Dired"                                             |
-
+Please take a look at [KEYMAPS](KEYMAPS.md)
 
 ## Contributing
 
