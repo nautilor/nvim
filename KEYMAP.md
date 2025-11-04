@@ -37,7 +37,7 @@
   { "i" ,  "n" }  |   "<C-b>"  |   ":NvimTreeToggle<Return>"  |   opts  
   "n"  |   "<leader>r"  |   vim.lsp.buf.rename  |    
   { "n" ,  "i" }  |   "<F2>"  |   vim.lsp.buf.rename  |    
-  { "i" ,  "n"  "t" }  |   '<C-t>'  |   ':ToggleTerm direction=float<Return>'  |   opts  
+  { "i" ,  "n" ,  "t" }  |   "<C-t>"  |   ":ToggleTerm direction=float<Return>"  |   opts  
   "n"  |   "<leader>gp"  |   ":Gitsign preview_hunk<Return>"  |   opts  
   "n"  |   "<C-n>"  |   toggleDired  |   opts  
-  'n'  |   '<leader>lc'  |   toggle_latex_compiler  |   opts  
+  "n"  |   "<leader>lc"  |   toggle_latex_compiler  |   opts  
