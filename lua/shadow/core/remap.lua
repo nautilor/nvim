@@ -78,7 +78,7 @@ keymap.set("n", "<leader>r", vim.lsp.buf.rename)
 keymap.set({ "n", "i" }, "<F2>", vim.lsp.buf.rename)
 
 -- ToggleTerm
-keymap.set({ "i", "n", "t" }, '<C-t>', ':ToggleTerm direction=float<Return>', opts)
+keymap.set({ "i", "n", "t" }, "<C-t>", ":ToggleTerm direction=float<Return>", opts)
 
 
 -- GitSigns

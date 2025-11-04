@@ -60,4 +60,4 @@ end
 -- keymap to toggle the latex compiler
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
-keymap.set('n', '<leader>lc', toggle_latex_compiler, opts)
+keymap.set("n", "<leader>lc", toggle_latex_compiler, opts)
