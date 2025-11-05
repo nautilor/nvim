@@ -16,5 +16,5 @@ while read -r keymap; do
 		}
 	' < <(echo $keymap | sed -E 's/^\(|\)//g') >> KEYMAP.md
 
-done < <(grep -r '^keymap' lua/. | sed -E 's/.*lua:\s{1,}?.*keymap\.set//g')
+done < <(grep -r '^keymap' lua/. | sed -E 's/.*lua:\s{1,}?.*keymap\.set//g;s/</\\</g')
 
