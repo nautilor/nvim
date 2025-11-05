@@ -5,6 +5,13 @@ local keymap = vim.keymap
 
 local opts = { noremap = true, silent = true }
 
+
+-- x does not override yanked
+keymap.set({ "n", "v" }, "x", '"_x', opts)
+
+-- v does not override yanked
+keymap.set("v", "p", ':call setreg("", @", "V") | put<Return>', opts)
+
 -- Tabs
 keymap.set("n", "<tab>", ":bnext<Return>", opts)
 keymap.set("n", "<S-tab>", ":bprev<Return>", opts)
