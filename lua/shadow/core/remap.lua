@@ -44,9 +44,11 @@ keymap.set("n", "<C-a>", "gg<S-v>G")
 
 -- Split
 keymap.set("n", "ss", ":split<Return>", opts)
-keymap.set("n", "sv", ":svplit<Return>", opts)
+keymap.set("n", "sv", ":vsplit<Return>", opts)
 keymap.set("n", "wd", "<C-w><C-w>", opts)
 keymap.set("n", "sd", "<C-w>q", opts)
+keymap.set("n", "sk", ":bp | bd #<Return>", opts)
+keymap.set("n", "<C-w>d", ":bp | bd #<Return>", opts)
 
 
 -- Diagnostic
@@ -78,7 +80,7 @@ keymap.set("n", "<leader>r", vim.lsp.buf.rename)
 keymap.set({ "n", "i" }, "<F2>", vim.lsp.buf.rename)
 
 -- ToggleTerm
-keymap.set({ "i", "n", "t" }, "<C-t>", ":ToggleTerm direction=float<Return>", opts)
+keymap.set({ "i", "n", "t" }, "<C-t>", "<cmd>ToggleTerm direction=float<Return>", opts)
 
 
 -- GitSigns

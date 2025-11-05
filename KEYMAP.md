@@ -18,9 +18,11 @@
   "v"  |   "<C-Right>"  |   ">gv"  |   opts  
   "n"  |   "<C-a>"  |   "gg<S-v>G"  |    
   "n"  |   "ss"  |   ":split<Return>"  |   opts  
-  "n"  |   "sv"  |   ":svplit<Return>"  |   opts  
+  "n"  |   "sv"  |   ":vsplit<Return>"  |   opts  
   "n"  |   "wd"  |   "<C-w><C-w>"  |   opts  
   "n"  |   "sd"  |   "<C-w>q"  |   opts  
+  "n"  |   "sk"  |   ":bp | bd #<Return>"  |   opts  
+  "n"  |   "<C-w>d"  |   ":bp | bd #<Return>"  |   opts  
   "n"  |   "<C-j>"  |   vim.diagnostic.goto_next  |   opts  
   "n"  |   "<C-l>"  |   ":LazyGit<Return>"  |   opts  
   "n"  |   "<leader><tab>"  |   ":Telescope find_files<Return>"  |   opts  
@@ -37,7 +39,7 @@
   { "i" ,  "n" }  |   "<C-b>"  |   ":NvimTreeToggle<Return>"  |   opts  
   "n"  |   "<leader>r"  |   vim.lsp.buf.rename  |    
   { "n" ,  "i" }  |   "<F2>"  |   vim.lsp.buf.rename  |    
-  { "i" ,  "n" ,  "t" }  |   "<C-t>"  |   ":ToggleTerm direction=float<Return>"  |   opts  
+  { "i" ,  "n" ,  "t" }  |   "<C-t>"  |   "<cmd>ToggleTerm direction=float<Return>"  |   opts  
   "n"  |   "<leader>gp"  |   ":Gitsign preview_hunk<Return>"  |   opts  
   "n"  |   "<C-n>"  |   toggleDired  |   opts  
   "n"  |   "<leader>lc"  |   toggle_latex_compiler  |   opts  
