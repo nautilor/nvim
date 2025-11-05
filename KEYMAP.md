@@ -1,7 +1,7 @@
 | Mode | Keybind | Command | Extra |
 |------|---------|----------|--------|
   { "n" ,  "v" }  |   "x"  |   '"_x'  |   opts  
-  "v"  |   "p"  |   ':call setreg(""  |   @"  
+  "v"  |   "p"  |   ':call setreg("", @", "V") \| put<Return>'  |   opts  
   "n"  |   "\<tab>"  |   ":bnext\<Return>"  |   opts  
   "n"  |   "\<S-tab>"  |   ":bprev\<Return>"  |   opts  
   "n"  |   "\<leader>bd"  |   ":bd!\<Return>"  |   opts  
@@ -23,8 +23,8 @@
   "n"  |   "sv"  |   ":vsplit\<Return>"  |   opts  
   "n"  |   "wd"  |   "\<C-w>\<C-w>"  |   opts  
   "n"  |   "sd"  |   "\<C-w>q"  |   opts  
-  "n"  |   "sk"  |   ":bp | bd #\<Return>"  |   opts  
-  "n"  |   "\<C-w>d"  |   ":bp | bd #\<Return>"  |   opts  
+  "n"  |   "sk"  |   ":bp \| bd #\<Return>"  |   opts  
+  "n"  |   "\<C-w>d"  |   ":bp \| bd #\<Return>"  |   opts  
   "n"  |   "\<C-j>"  |   vim.diagnostic.goto_next  |   opts  
   "n"  |   "\<C-l>"  |   ":LazyGit\<Return>"  |   opts  
   "n"  |   "\<leader>\<tab>"  |   ":Telescope find_files\<Return>"  |   opts  
