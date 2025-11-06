@@ -3,26 +3,30 @@ vim.g.maplocalleader = "\\"
 
 local keymap = vim.keymap
 
-local opts = { noremap = true, silent = true }
+local opts = { remap = true, silent = true }
+local nopts = { noremap = true, silent = true }
 
+-- Comment code
+keymap.set("n", "<C-/>", "gcc", opts)
+keymap.set("v", "<C-/>", 'gc', opts)
 
 -- x does not override yanked
-keymap.set({ "n", "v" }, "x", '"_x', opts)
+keymap.set({ "n", "v" }, "x", '"_x', nopts)
 
 -- v does not override yanked
-keymap.set("v", "p", ':call setreg("", @", "V") | put<Return>', opts)
+keymap.set("v", "p", ':call setreg("", @", "V") | put<Return>', nopts)
 
 -- Tabs
-keymap.set("n", "<tab>", ":bnext<Return>", opts)
-keymap.set("n", "<S-tab>", ":bprev<Return>", opts)
-keymap.set("n", "<leader>bd", ":bd!<Return>", opts)
+keymap.set("n", "<tab>", ":bnext<Return>", nopts)
+keymap.set("n", "<S-tab>", ":bprev<Return>", nopts)
+keymap.set("n", "<leader>bd", ":bd!<Return>", nopts)
 
 -- Terminal esc key
 keymap.set("t", "<Esc>", [[<C-\><C-n>]])
 
 -- Close
-keymap.set("n", "<leader>q", ":q<Return>", opts)
-keymap.set("n", "<leader>!", ":q!<Return>", opts)
+keymap.set("n", "<leader>q", ":q<Return>", nopts)
+keymap.set("n", "<leader>!", ":q!<Return>", nopts)
 
 -- Save
 keymap.set("n", "<C-s>", ":w<Return>")
@@ -35,14 +39,14 @@ keymap.set({ "n", "v" }, "<C-p>", "\"+p")
 keymap.set("n", "q", "")
 keymap.set({ "n", "i" }, "<F1>", "")
 
--- reset the last search highlight
-keymap.set("n", "<leader>/", ":nohlsearch<Return>", opts)
+-- Reset the last search highlight
+keymap.set("n", "<leader>/", ":nohlsearch<Return>", nopts)
 
 -- Line movement
-keymap.set("v", "<C-Down>", ":m '>+1<CR>gv=gv", opts)
-keymap.set("v", "<C-Up>", ":m '<-2<CR>gv=gv", opts)
-keymap.set("v", "<C-Left>", "<gv", opts)
-keymap.set("v", "<C-Right>", ">gv", opts)
+keymap.set("v", "<C-Down>", ":m '>+1<CR>gv=gv", nopts)
+keymap.set("v", "<C-Up>", ":m '<-2<CR>gv=gv", nopts)
+keymap.set("v", "<C-Left>", "<gv", nopts)
+keymap.set("v", "<C-Right>", ">gv", nopts)
 
 
 -- Select all
@@ -50,48 +54,48 @@ keymap.set("n", "<C-a>", "gg<S-v>G")
 
 
 -- Split
-keymap.set("n", "ss", ":split<Return>", opts)
-keymap.set("n", "sv", ":vsplit<Return>", opts)
-keymap.set("n", "wd", "<C-w><C-w>", opts)
-keymap.set("n", "sd", "<C-w>q", opts)
-keymap.set("n", "sk", ":bp | bd #<Return>", opts)
-keymap.set("n", "<C-w>d", ":bp | bd #<Return>", opts)
+keymap.set("n", "ss", ":split<Return>", nopts)
+keymap.set("n", "sv", ":vsplit<Return>", nopts)
+keymap.set("n", "wd", "<C-w><C-w>", nopts)
+keymap.set("n", "sd", "<C-w>q", nopts)
+keymap.set("n", "sk", ":bp | bd #<Return>", nopts)
+keymap.set("n", "<C-w>d", ":bp | bd #<Return>", nopts)
 
 
 -- Diagnostic
-keymap.set("n", "<C-j>", vim.diagnostic.goto_next, opts)
+keymap.set("n", "<C-j>", vim.diagnostic.goto_next, nopts)
 
 
 -- LazyGit
-keymap.set("n", "<C-l>", ":LazyGit<Return>", opts)
+keymap.set("n", "<C-l>", ":LazyGit<Return>", nopts)
 
 
 -- Telescope
-keymap.set("n", "<leader><tab>", ":Telescope find_files<Return>", opts)
-keymap.set("n", "<leader>fg", ":Telescope live_grep<Return>", opts)
-keymap.set("n", "<leader>bb", ":Telescope buffers<Return>", opts)
-keymap.set("n", "<leader>gd", ":Telescope lsp_definitions<Return>", opts)
-keymap.set({ "i", "n" }, "<C-tab>", ":Telescope buffers<Return>", opts)
-keymap.set({ "i", "n" }, "<C-o>", ":Telescope find_files<Return>", opts)
-keymap.set({ "i", "n" }, "<C-f>", ":Telescope live_grep<Return>", opts)
-keymap.set({ "i", "n" }, "<C-tab>", ":Telescope buffers<Return>", opts)
-keymap.set({ "i", "n" }, "<C-g>", ":Telescope lsp_definitions<Return>", opts)
-keymap.set({ "i", "n" }, "<C-f>", ":Telescope live_grep<Return>", opts)
+keymap.set("n", "<leader><tab>", ":Telescope find_files<Return>", nopts)
+keymap.set("n", "<leader>fg", ":Telescope live_grep<Return>", nopts)
+keymap.set("n", "<leader>bb", ":Telescope buffers<Return>", nopts)
+keymap.set("n", "<leader>gd", ":Telescope lsp_definitions<Return>", nopts)
+keymap.set({ "i", "n" }, "<C-tab>", ":Telescope buffers<Return>", nopts)
+keymap.set({ "i", "n" }, "<C-o>", ":Telescope find_files<Return>", nopts)
+keymap.set({ "i", "n" }, "<C-f>", ":Telescope live_grep<Return>", nopts)
+keymap.set({ "i", "n" }, "<C-tab>", ":Telescope buffers<Return>", nopts)
+keymap.set({ "i", "n" }, "<C-g>", ":Telescope lsp_definitions<Return>", nopts)
+keymap.set({ "i", "n" }, "<C-f>", ":Telescope live_grep<Return>", nopts)
 
 -- NvimTree
-keymap.set("n", "<leader>e", ":NvimTreeToggle<Return>", opts)
-keymap.set({ "i", "n" }, "<C-b>", ":NvimTreeToggle<Return>", opts)
+keymap.set("n", "<leader>e", ":NvimTreeToggle<Return>", nopts)
+keymap.set({ "i", "n" }, "<C-b>", ":NvimTreeToggle<Return>", nopts)
 
 -- LSP
 keymap.set("n", "<leader>r", vim.lsp.buf.rename)
 keymap.set({ "n", "i" }, "<F2>", vim.lsp.buf.rename)
 
 -- ToggleTerm
-keymap.set({ "i", "n", "t" }, "<C-t>", "<cmd>ToggleTerm direction=float<Return>", opts)
+keymap.set({ "i", "n", "t" }, "<C-t>", "<cmd>ToggleTerm direction=float<Return>", nopts)
 
 
 -- GitSigns
-keymap.set("n", "<leader>gp", ":Gitsign preview_hunk<Return>", opts)
+keymap.set("n", "<leader>gp", ":Gitsign preview_hunk<Return>", nopts)
 
 
 -- Dired
@@ -107,4 +111,4 @@ function toggleDired()
 	vim.cmd("Dired")
 end
 
-keymap.set("n", "<C-n>", toggleDired, opts)
+keymap.set("n", "<C-n>", toggleDired, nopts)
