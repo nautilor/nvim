@@ -69,16 +69,18 @@ keymap.set("n", "<C-j>", vim.diagnostic.goto_next, nopts)
 -- LazyGit
 keymap.set("n", "<C-l>", ":LazyGit<Return>", nopts)
 
+-- Go back and forward from jumps
+keymap.set("n", "<C-w>b", "<C-o>", nopts)
+keymap.set("n", "<C-w>f", "<C-i>", nopts)
+
 
 -- Telescope
 keymap.set("n", "<leader><tab>", ":Telescope find_files<Return>", nopts)
 keymap.set("n", "<leader>fg", ":Telescope live_grep<Return>", nopts)
 keymap.set("n", "<leader>bb", ":Telescope buffers<Return>", nopts)
 keymap.set("n", "<leader>gd", ":Telescope lsp_definitions<Return>", nopts)
-keymap.set({ "i", "n" }, "<C-tab>", ":Telescope buffers<Return>", nopts)
 keymap.set({ "i", "n" }, "<C-o>", ":Telescope find_files<Return>", nopts)
 keymap.set({ "i", "n" }, "<C-f>", ":Telescope live_grep<Return>", nopts)
-keymap.set({ "i", "n" }, "<C-tab>", ":Telescope buffers<Return>", nopts)
 keymap.set({ "i", "n" }, "<C-g>", ":Telescope lsp_definitions<Return>", nopts)
 keymap.set({ "i", "n" }, "<C-f>", ":Telescope live_grep<Return>", nopts)
 
@@ -96,19 +98,3 @@ keymap.set({ "i", "n", "t" }, "<C-t>", "<cmd>ToggleTerm direction=float<Return>"
 
 -- GitSigns
 keymap.set("n", "<leader>gp", ":Gitsign preview_hunk<Return>", nopts)
-
-
--- Dired
-function toggleDired()
-	for _, win in ipairs(vim.api.nvim_list_wins()) do
-		local buf = vim.api.nvim_win_get_buf(win)
-		local ft = vim.api.nvim_buf_get_option(buf, "filetype")
-		if ft == "dired" then
-			vim.cmd("DiredQuit")
-			return
-		end
-	end
-	vim.cmd("Dired")
-end
-
-keymap.set("n", "<C-n>", toggleDired, nopts)
