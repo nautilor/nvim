@@ -1,5 +1,7 @@
 | Mode | Keybind | Command | Extra |
 |------|---------|----------|--------|
+  { "n" ,  "v" }  |   "\<S-Down>"  |   "3j"  |   opts  
+  { "n" ,  "v" }  |   "\<S-Up>"  |   "3k"  |   opts  
   "n"  |   "\<C-/>"  |   "gcc"  |   opts  
   "v"  |   "\<C-/>"  |   'gc'  |   opts  
   { "n" ,  "v" }  |   "x"  |   '"_x'  |   nopts  

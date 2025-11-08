@@ -6,6 +6,11 @@ local keymap = vim.keymap
 local opts = { remap = true, silent = true }
 local nopts = { noremap = true, silent = true }
 
+
+-- Move X lines when using shift+down/up
+keymap.set({ "n", "v" }, "<S-Down>", "3j", opts)
+keymap.set({ "n", "v" }, "<S-Up>", "3k", opts)
+
 -- Comment code
 keymap.set("n", "<C-/>", "gcc", opts)
 keymap.set("v", "<C-/>", 'gc', opts)
