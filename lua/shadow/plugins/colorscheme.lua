@@ -10,6 +10,13 @@ return {
 				light = "latte",
 				dark = "mocha"
 			},
+			custom_highlights = function(colors)
+				return {
+					-- Usa lo stesso bg di Telescope
+					ToggleTermNormal = { link = "TelescopeNormal" },
+					ToggleTermBorder = { link = "TelescopeBorder" },
+				}
+			end,
 			transparent_background = true,
 			float = {
 				transparent = false, -- enable transparent floating windows
