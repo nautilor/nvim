@@ -103,3 +103,14 @@ keymap.set({ "i", "n", "t" }, "<C-t>", "<cmd>ToggleTerm direction=float<Return>"
 
 -- GitSigns
 keymap.set("n", "<leader>gp", ":Gitsign preview_hunk<Return>", nopts)
+
+
+-- Obsidian
+keymap.set("n", "<leader>os", ":Obsidian quick_switch<CR>")
+keymap.set("n", "<leader>on", ":Obsidian new<CR>")
+vim.api.nvim_create_autocmd("User", {
+	pattern = "ObsidianNoteEnter",
+	callback = function()
+		keymap.set("n", "<leader>oc", ":Obsidian toggle_checkbox<CR>")
+	end
+})

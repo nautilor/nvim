@@ -47,4 +47,6 @@
   { "n" ,  "i" }  |   "\<F2>"  |   vim.lsp.buf.rename  |    
   { "i" ,  "n" ,  "t" }  |   "\<C-t>"  |   "\<cmd>ToggleTerm direction=float\<Return>"  |   nopts  
   "n"  |   "\<leader>gp"  |   ":Gitsign preview_hunk\<Return>"  |   nopts  
+  "n"  |   "\<leader>os"  |   ":Obsidian quick_switch\<CR>"  |    
+  "n"  |   "\<leader>on"  |   ":Obsidian new\<CR>"  |    
   "n"  |   "\<leader>lc"  |   toggle_latex_compiler  |   opts  
