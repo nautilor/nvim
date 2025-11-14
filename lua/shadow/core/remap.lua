@@ -78,16 +78,20 @@ keymap.set("n", "<C-l>", ":LazyGit<Return>", nopts)
 keymap.set("n", "<C-w>b", "<C-o>", nopts)
 keymap.set("n", "<C-w>f", "<C-i>", nopts)
 
+-- Snacks Picker
+keymap.set({ "i", "n" }, "<C-o>", function() require("snacks").picker.files() end, nopts)
+keymap.set({ "i", "n" }, "<C-f>", function() require("snacks").picker.grep() end, nopts)
+keymap.set("n", "<leader>bb", function() require("snacks").picker.buffers() end, nopts)
 
--- Telescope
-keymap.set("n", "<leader><tab>", ":Telescope find_files<Return>", nopts)
-keymap.set("n", "<leader>fg", ":Telescope live_grep<Return>", nopts)
-keymap.set("n", "<leader>bb", ":Telescope buffers<Return>", nopts)
-keymap.set("n", "<leader>gd", ":Telescope lsp_definitions<Return>", nopts)
-keymap.set({ "i", "n" }, "<C-o>", ":Telescope find_files<Return>", nopts)
-keymap.set({ "i", "n" }, "<C-f>", ":Telescope live_grep<Return>", nopts)
-keymap.set({ "i", "n" }, "<C-g>", ":Telescope lsp_definitions<Return>", nopts)
-keymap.set({ "i", "n" }, "<C-f>", ":Telescope live_grep<Return>", nopts)
+-- Snacks LSP
+keymap.set("n", "<leader>gd", function() require("snacks").picker.lsp_definitions() end, nopts)
+keymap.set("n", "<leader>gf", function() require("snacks").picker.lsp_references() end, nopts)
+
+-- Snacks Zen
+keymap.set("n", "<leader>fm", function() require("snacks").zen() end, nopts)
+
+-- ToggleTerm
+keymap.set({ "n", "v", "t", "i" }, "<C-t>", ":ToggleTerm direction=float<Return>", nopts)
 
 -- NvimTree
 keymap.set("n", "<leader>e", ":NvimTreeToggle<Return>", nopts)
@@ -96,10 +100,6 @@ keymap.set({ "i", "n" }, "<C-b>", ":NvimTreeToggle<Return>", nopts)
 -- LSP
 keymap.set("n", "<leader>r", vim.lsp.buf.rename)
 keymap.set({ "n", "i" }, "<F2>", vim.lsp.buf.rename)
-
--- ToggleTerm
-keymap.set({ "i", "n", "t" }, "<C-t>", "<cmd>ToggleTerm direction=float<Return>", nopts)
-
 
 -- GitSigns
 keymap.set("n", "<leader>gp", ":Gitsign preview_hunk<Return>", nopts)
