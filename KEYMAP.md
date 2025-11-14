@@ -9,7 +9,7 @@
   "n"  |   "\<tab>"  |   ":bnext\<Return>"  |   nopts  
   "n"  |   "\<S-tab>"  |   ":bprev\<Return>"  |   nopts  
   "n"  |   "\<leader>bd"  |   ":bd!\<Return>"  |   nopts  
-  "t"  |   "\<Esc>"  |   [[\<C-\>\<C-n>]]  |    
+  "t"  |   "\<Esc>"  |   \[\[\<C-\>\<C-n>]]  |    
   "n"  |   "\<leader>q"  |   ":q\<Return>"  |   nopts  
   "n"  |   "\<leader>!"  |   ":q!\<Return>"  |   nopts  
   "n"  |   "\<C-s>"  |   ":w\<Return>"  |    
@@ -33,20 +33,19 @@
   "n"  |   "\<C-l>"  |   ":LazyGit\<Return>"  |   nopts  
   "n"  |   "\<C-w>b"  |   "\<C-o>"  |   nopts  
   "n"  |   "\<C-w>f"  |   "\<C-i>"  |   nopts  
-  "n"  |   "\<leader>\<tab>"  |   ":Telescope find_files\<Return>"  |   nopts  
-  "n"  |   "\<leader>fg"  |   ":Telescope live_grep\<Return>"  |   nopts  
-  "n"  |   "\<leader>bb"  |   ":Telescope buffers\<Return>"  |   nopts  
-  "n"  |   "\<leader>gd"  |   ":Telescope lsp_definitions\<Return>"  |   nopts  
-  { "i" ,  "n" }  |   "\<C-o>"  |   ":Telescope find_files\<Return>"  |   nopts  
-  { "i" ,  "n" }  |   "\<C-f>"  |   ":Telescope live_grep\<Return>"  |   nopts  
-  { "i" ,  "n" }  |   "\<C-g>"  |   ":Telescope lsp_definitions\<Return>"  |   nopts  
-  { "i" ,  "n" }  |   "\<C-f>"  |   ":Telescope live_grep\<Return>"  |   nopts  
+  { "i" ,  "n" }  |   "\<C-o>"  |   function( require("snacks".picker.files() end  |   nopts  
+  { "i" ,  "n" }  |   "\<C-f>"  |   function( require("snacks".picker.grep() end  |   nopts  
+  "n"  |   "\<leader>bb"  |   function( require("snacks".picker.buffers() end  |   nopts  
+  "n"  |   "\<leader>gd"  |   function( require("snacks".picker.lsp_definitions() end  |   nopts  
+  "n"  |   "\<leader>gf"  |   function( require("snacks".picker.lsp_references() end  |   nopts  
+  "n"  |   "\<leader>fm"  |   function( require("snacks".zen() end  |   nopts  
+  { "n" ,  "v",  "t",   "i" }  |   "\<C-t>" | :ToggleTerm direction=float<Return> | nopts 
   "n"  |   "\<leader>e"  |   ":NvimTreeToggle\<Return>"  |   nopts  
   { "i" ,  "n" }  |   "\<C-b>"  |   ":NvimTreeToggle\<Return>"  |   nopts  
   "n"  |   "\<leader>r"  |   vim.lsp.buf.rename  |    
   { "n" ,  "i" }  |   "\<F2>"  |   vim.lsp.buf.rename  |    
-  { "i" ,  "n" ,  "t" }  |   "\<C-t>"  |   "\<cmd>ToggleTerm direction=float\<Return>"  |   nopts  
   "n"  |   "\<leader>gp"  |   ":Gitsign preview_hunk\<Return>"  |   nopts  
   "n"  |   "\<leader>os"  |   ":Obsidian quick_switch\<CR>"  |    
   "n"  |   "\<leader>on"  |   ":Obsidian new\<CR>"  |    
+  "n"  |   "\<leader>oo"  |   ":cd ~/.obsidian/Notes/\<CR>"  |    
   "n"  |   "\<leader>lc"  |   toggle_latex_compiler  |   opts  
