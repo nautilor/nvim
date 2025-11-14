@@ -108,6 +108,7 @@ keymap.set("n", "<leader>gp", ":Gitsign preview_hunk<Return>", nopts)
 -- Obsidian
 keymap.set("n", "<leader>os", ":Obsidian quick_switch<CR>")
 keymap.set("n", "<leader>on", ":Obsidian new<CR>")
+keymap.set("n", "<leader>oo", ":cd ~/.obsidian/Notes/<CR>")
 vim.api.nvim_create_autocmd("User", {
 	pattern = "ObsidianNoteEnter",
 	callback = function()
