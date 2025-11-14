@@ -5,7 +5,7 @@ return {
 	},
 	-- options that you will normally parse to .setup({})
 	opts = {
-		filters = { dotfiles = false },
+		filters = { dotfiles = false, custom = { '.obsidian' } },
 		disable_netrw = true,
 		hijack_cursor = true,
 		sync_root_with_cwd = true,
