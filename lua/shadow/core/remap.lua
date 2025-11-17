@@ -12,8 +12,10 @@ keymap.set({ "n", "v" }, "<S-Down>", "3j", opts)
 keymap.set({ "n", "v" }, "<S-Up>", "3k", opts)
 
 -- Comment code
+keymap.set("n", "<C-_>", "gcc", opts)
+keymap.set("v", "<C-_>", "gc", opts)
 keymap.set("n", "<C-/>", "gcc", opts)
-keymap.set("v", "<C-/>", 'gc', opts)
+keymap.set("v", "<C-/>", "gc", opts)
 
 -- x does not override yanked
 keymap.set({ "n", "v" }, "x", '"_x', nopts)
