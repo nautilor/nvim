@@ -7,7 +7,9 @@ return {
 			"ts_ls",
 			"eslint",
 			"clangd",
-			"lua_ls"
+			"lua_ls",
+			"jdtls",
+			"vscode_spring_boot_tools"
 		})
 	end
 }
