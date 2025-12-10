@@ -1,5 +1,38 @@
 local mocha = require("catppuccin.palettes").get_palette "mocha"
 
+local catppuccin_theme = {
+	normal = {
+		a = { fg = mocha.surface0, bg = mocha.mauve, gui = "bold" },
+		b = { fg = mocha.text, bg = mocha.surface1 },
+		c = { fg = mocha.text, bg = mocha.surface0 },
+	},
+	insert = {
+		a = { fg = mocha.surface0, bg = mocha.blue, gui = "bold" },
+		b = { fg = mocha.text, bg = mocha.surface1 },
+		c = { fg = mocha.text, bg = mocha.surface0 },
+	},
+	visual = {
+		a = { fg = mocha.surface0, bg = mocha.teal, gui = "bold" },
+		b = { fg = mocha.text, bg = mocha.surface1 },
+		c = { fg = mocha.text, bg = mocha.surface0 },
+	},
+	replace = {
+		a = { fg = mocha.surface0, bg = mocha.red, gui = "bold" },
+		b = { fg = mocha.text, bg = mocha.surface1 },
+		c = { fg = mocha.text, bg = mocha.surface0 },
+	},
+	command = {
+		a = { fg = mocha.surface0, bg = mocha.yellow, gui = "bold" },
+		b = { fg = mocha.text, bg = mocha.surface1 },
+		c = { fg = mocha.text, bg = mocha.surface0 },
+	},
+	inactive = {
+		a = { fg = mocha.surface0, bg = mocha.surface1, gui = "bold" },
+		b = { fg = mocha.text, bg = mocha.surface1 },
+		c = { fg = mocha.text, bg = mocha.surface0 },
+	},
+}
+
 return {
 	'nvim-lualine/lualine.nvim',
 	dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -9,8 +42,8 @@ return {
 	opts = {
 		options = {
 			component_separators = { left = "", right = "" },
-			section_separators = { left = "", right = "" },
-			theme = 'catppuccin',
+			section_separators = { left = "", right = "" },
+			theme = catppuccin_theme,
 		},
 		sections = {
 			lualine_a = {
@@ -21,11 +54,11 @@ return {
 						return vim.api.nvim_get_mode().mode == "t" and ""
 								or ""
 					end,
-					separator = { left = "" }
+					separator = { left = "" }
 				},
 				{
 					"mode",
-					separator = { right = "" }
+					separator = { right = "" }
 				}
 			},
 			lualine_b = {
@@ -34,6 +67,7 @@ return {
 				},
 				{
 					"diff",
+					separator = { right = "" }
 				}
 			},
 			lualine_c = {
@@ -44,6 +78,7 @@ return {
 				{
 					"filetype",
 					icon_only = true,
+					separator = { left = "" }
 				},
 				{ "filename", icon_only = true, },
 				{ "progress", icon_only = true, },
@@ -63,7 +98,7 @@ return {
 					fmt = function(location)
 						return location:gsub("%s+", "")
 					end,
-					separator = { right = "", left = "" }
+					separator = { right = "", left = "" }
 				},
 			},
 		},
