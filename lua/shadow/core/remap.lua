@@ -6,6 +6,8 @@ local keymap = vim.keymap
 local opts = { remap = true, silent = true }
 local nopts = { noremap = true, silent = true }
 
+-- Paste does not override the clipboard
+vim.keymap.set("x", "p", '"_dP')
 
 -- Move X lines when using shift+down/up
 keymap.set({ "n", "v" }, "<S-Down>", "3j", opts)
@@ -20,9 +22,6 @@ keymap.set("v", "<C-/>", "gc", opts)
 -- x does not override yanked
 keymap.set({ "n", "v" }, "x", '"_x', nopts)
 
--- v does not override yanked
-keymap.set("v", "p", ':call setreg("", @", "V") | put<Return>', nopts)
-
 -- Tabs
 keymap.set("n", "<tab>", ":bnext<Return>", nopts)
 keymap.set("n", "<S-tab>", ":bprev<Return>", nopts)
@@ -34,6 +33,7 @@ keymap.set("t", "<Esc>", [[<C-\><C-n>]])
 -- Close
 keymap.set("n", "<leader>q", ":q<Return>", nopts)
 keymap.set("n", "<leader>!", ":q!<Return>", nopts)
+keymap.set("n", "<leader><F1>", ":q!<Return>", nopts)
 
 -- Save
 keymap.set("n", "<C-s>", ":w<Return>")
@@ -52,8 +52,12 @@ keymap.set("n", "<leader>/", ":nohlsearch<Return>", nopts)
 -- Line movement
 keymap.set("v", "<C-Down>", ":m '>+1<CR>gv=gv", nopts)
 keymap.set("v", "<C-Up>", ":m '<-2<CR>gv=gv", nopts)
+keymap.set("n", "<C-Down>", ":m .+1<CR>==", nopts)
+keymap.set("n", "<C-Up>", ":m .-2<CR>==", nopts)
 keymap.set("v", "<C-Left>", "<gv", nopts)
 keymap.set("v", "<C-Right>", ">gv", nopts)
+keymap.set("n", "<C-Left>", "<<", nopts)
+keymap.set("n", "<C-Right>", ">>", nopts)
 
 
 -- Select all
@@ -61,12 +65,17 @@ keymap.set("n", "<C-a>", "gg<S-v>G")
 
 
 -- Split
-keymap.set("n", "ss", ":split<Return>", nopts)
-keymap.set("n", "sv", ":vsplit<Return>", nopts)
-keymap.set("n", "wd", "<C-w><C-w>", nopts)
+keymap.set("n", "sv", ":split<Return>", nopts)
+keymap.set("n", "ss", ":vsplit<Return>", nopts)
+keymap.set("n", "wd", "<C-w><C-w>", opts)
 keymap.set("n", "sd", "<C-w>q", nopts)
 keymap.set("n", "sk", ":bp | bd #<Return>", nopts)
-keymap.set("n", "<C-w>d", ":bp | bd #<Return>", nopts)
+keymap.set("n", "<C-w><C-d>", "<C-w>q", nopts)
+keymap.set("n", "<C-w><C-d>", ":bp | bd #<Return>", nopts)
+keymap.set("n", "<C-w><C-j>", function() require("tmux").move_right() end, nopts)
+keymap.set("n", "<C-w><C-i>", function() require("tmux").move_top() end, nopts)
+keymap.set("n", "<C-w><C-k>", function() require("tmux").move_bottom() end, nopts)
+keymap.set("n", "<C-w><C-l>", function() require("tmux").move_left() end, nopts)
 
 
 -- Diagnostic
@@ -93,7 +102,7 @@ keymap.set("n", "<leader>gf", function() require("snacks").picker.lsp_references
 keymap.set("n", "<leader>fm", function() require("snacks").zen() end, nopts)
 
 -- ToggleTerm
-keymap.set({ "n", "v", "t", "i" }, "<C-t>", ":ToggleTerm direction=float<Return>", nopts)
+keymap.set({ "n", "v", "t", "i" }, "<C-t>", "<cmd>ToggleTerm direction=float<Return>", nopts)
 
 -- NvimTree
 keymap.set("n", "<leader>e", ":NvimTreeToggle<Return>", nopts)
