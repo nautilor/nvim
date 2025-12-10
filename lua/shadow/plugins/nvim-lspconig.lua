@@ -9,7 +9,8 @@ return {
 			"clangd",
 			"lua_ls",
 			"jdtls",
-			"vscode_spring_boot_tools"
+			"vscode_spring_boot_tools",
+			"copilot_language_server"
 		})
 	end
 }
