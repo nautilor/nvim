@@ -68,7 +68,21 @@ keymap.set("n", "<C-a>", "gg<S-v>G")
 keymap.set("n", "sv", ":split<Return>", nopts)
 keymap.set("n", "ss", ":vsplit<Return>", nopts)
 keymap.set("n", "wd", "<C-w><C-w>", opts)
-keymap.set("n", "sd", "<C-w>q", nopts)
+local keymap = vim.keymap
+
+local function smart_close()
+	-- Conta quante finestre sono aperte
+	if #vim.api.nvim_list_wins() > 1 then
+		-- Se ce ne sono più di una, chiude solo la finestra corrente
+		vim.cmd("close")
+	else
+		-- Altrimenti chiude il buffer
+		vim.cmd("bd!")
+	end
+end
+
+keymap.set("n", "sd", smart_close, nopts)
+
 keymap.set("n", "sk", ":bp | bd #<Return>", nopts)
 keymap.set("n", "<C-w><C-d>", "<C-w>q", nopts)
 keymap.set("n", "<C-w><C-d>", ":bp | bd #<Return>", nopts)
