@@ -12,7 +12,7 @@ return {
 			}
 		},
 		float_opts = {
-			border = "solid",
+			border = "curved",
 		}
 	}
 }

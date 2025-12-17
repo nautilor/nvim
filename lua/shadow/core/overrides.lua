@@ -5,3 +5,4 @@ vim.opt.fillchars = { horizdown = "┬" }
 vim.opt.fillchars = { vertleft = "┤" }
 vim.opt.fillchars = { vertright = "├" }
 vim.opt.fillchars = { verthoriz = "┬" }
+vim.opt.fillchars = { eob = " " }
