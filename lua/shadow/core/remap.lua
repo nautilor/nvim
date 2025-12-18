@@ -118,7 +118,7 @@ keymap.set("n", "<leader>gd", function() require("snacks").picker.lsp_definition
 keymap.set("n", "<leader>gf", function() require("snacks").picker.lsp_references() end, nopts)
 
 -- Snacks Zen
-keymap.set("n", "<leader>fm", function() require("snacks").zen() end, nopts)
+keymap.set("n", "<C-z>", function() require("snacks").zen() end, nopts)
 
 -- ToggleTerm
 keymap.set({ "n", "v", "t", "i" }, "<C-t>", "<cmd>ToggleTerm direction=float<Return>", nopts)
