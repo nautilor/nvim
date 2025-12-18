@@ -39,8 +39,13 @@ keymap.set("n", "<leader><F1>", ":q!<Return>", nopts)
 keymap.set("n", "<C-s>", ":w<Return>")
 
 -- System clipboard
-keymap.set({ "n", "v" }, "<C-y>", "\"+y")
-keymap.set({ "n", "v" }, "<C-p>", "\"+p")
+keymap.set({ "n", "x" }, "<C-y>", '"+y', nopts)
+
+
+keymap.set("n", "<C-p>", "\"+p", nopts)
+keymap.set("v", "<C-p>", '"_d"+P', nopts)
+keymap.set("x", "<C-p>", '"_d"+P', nopts)
+
 
 -- Disable F1 & q
 keymap.set("n", "q", "")
