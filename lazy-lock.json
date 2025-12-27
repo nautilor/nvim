@@ -14,6 +14,7 @@
   "markview.nvim": { "branch": "main", "commit": "0a5033326f703d99a8788e2d47753d6298195e8a" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "3b3571b4dadbcb464804466e9872e7246c316af7" },
   "mason.nvim": { "branch": "main", "commit": "57e5a8addb8c71fb063ee4acda466c7cf6ad2800" },
+  "mini.move": { "branch": "main", "commit": "4d214202d71e0a4066b6288176bbe88f268f9777" },
   "nui.nvim": { "branch": "main", "commit": "de740991c12411b663994b2860f1a4fd0937c130" },
   "nvim-autopairs": { "branch": "master", "commit": "c2a0dd0d931d0fb07665e1fedb1ea688da3b80b4" },
   "nvim-colorizer.lua": { "branch": "master", "commit": "a065833f35a3a7cc3ef137ac88b5381da2ba302e" },

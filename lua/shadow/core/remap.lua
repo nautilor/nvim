@@ -1,6 +1,7 @@
 local keymap = vim.keymap
 local opts = { remap = true, silent = true }
 local nopts = { noremap = true, silent = true }
+local term_opts = { silent = true }
 
 local function smart_close()
 	if #vim.api.nvim_list_wins() > 1 then
@@ -50,16 +51,6 @@ keymap.set("n", "<leader><C-q>", ":q!<Return>", nopts)
 -- Move X lines when using shift+down/up
 keymap.set({ "n", "v" }, "<S-Down>", "3j", opts)
 keymap.set({ "n", "v" }, "<S-Up>", "3k", opts)
-
--- Line movement
-keymap.set("v", "<C-Down>", ":m '>+1<CR>gv=gv", nopts)
-keymap.set("v", "<C-Up>", ":m '<-2<CR>gv=gv", nopts)
-keymap.set("n", "<C-Down>", ":m .+1<CR>==", nopts)
-keymap.set("n", "<C-Up>", ":m .-2<CR>==", nopts)
-keymap.set("v", "<C-Left>", "<gv", nopts)
-keymap.set("v", "<C-Right>", ">gv", nopts)
-keymap.set("n", "<C-Left>", "<<", nopts)
-keymap.set("n", "<C-Right>", ">>", nopts)
 
 -- Comment code
 keymap.set("n", "<C-_>", "gcc", opts)
