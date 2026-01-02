@@ -5,14 +5,14 @@ return {
 		shade_terminal = false,
 		highlights = {
 			NormalFloat = {
-				link = "ToggleTermNormal"
+				link = "ToggleTermNormal",
 			},
 			NormalBorder = {
 				link = "ToggleTermBorder"
 			}
 		},
 		float_opts = {
-			border = "curved",
+			border = "single",
 		}
 	}
 }
