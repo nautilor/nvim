@@ -1,12 +1,18 @@
 return {
-	"nautilor/onedark.nvim",
+	"folke/tokyonight.nvim",
 	priority = 1000,
-	-- set colorscheme
+	opts = {
+		colorscheme = "tokyonight",
+		transparent = true,
+		styles = {
+			sidebars = "transparent",
+			floats = "dark",
+		},
+	},
+
 	config = function(_, opts)
-		require("onedark").setup({
-			style = "darker",
-			transparent = true,
-		})
-		vim.cmd.colorscheme "onedark"
-	end
+		require("tokyonight").setup(opts)
+		vim.cmd.colorscheme(opts.colorscheme)
+	end,
+
 }

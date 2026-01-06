@@ -1,19 +1,24 @@
 local palette = {
-	bg       = 0x16181D, -- frame / main background
-	surface1 = 0x1B1E23,
-	surface2 = 0x21252B,
-	surface3 = 0x2A2E36,
+	-- Base (Tokyo Night Moon)
+	bg       = 0x1A1B26, -- base background (Moon)
+	surface1 = 0x16161F, -- inset / darker panels
+	surface2 = 0x1F2030, -- raised surfaces
+	surface3 = 0x25263A, -- active / hover
 
-	fg       = 0xABB2BF,
-	fg_muted = 0x5C6370,
+	-- Foregrounds
+	fg       = 0xC8D3F5, -- Moon foreground
+	fg_muted = 0x545C7E, -- comments / muted text
 
-	primary  = 0x528BFF, -- Atom blue
-	fun      = 0x61AFEF, -- functions / identifiers
-	special  = 0xE5C07B, -- specials / accents
+	-- Accents (Moon-tuned)
+	primary  = 0x82AAFF, -- Moon blue
+	fun      = 0x86E1FC, -- cyan (functions)
+	special  = 0xFFC777, -- warm accent
 
-	border   = 0x3E4451,
-	black    = 0x17161C,
+	-- UI
+	border   = 0x3B4261,
+	black    = 0x13131B,
 }
+
 
 local sethl = function(...)
 	vim.api.nvim_set_hl(0, ...)
