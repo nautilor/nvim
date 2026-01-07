@@ -1,8 +1,2 @@
-vim.opt.fillchars = { vert = "│" }
-vim.opt.fillchars = { horiz = "─" }
-vim.opt.fillchars = { horizup = "┴" }
-vim.opt.fillchars = { horizdown = "┬" }
-vim.opt.fillchars = { vertleft = "┤" }
-vim.opt.fillchars = { vertright = "├" }
-vim.opt.fillchars = { verthoriz = "┬" }
-vim.opt.fillchars = { eob = " " }
+vim.g.lazygit_floating_window_border_chars = { '', '', '', '', '', '', '', '' } -- customize lazygit popup window border characters
+vim.g.lazygit_floating_window_scaling_factor = 1.0                              -- customize lazygit popup window scaling factor
