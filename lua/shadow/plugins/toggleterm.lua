@@ -1,3 +1,5 @@
+local colors = require("tokyonight.colors").setup()
+
 return {
 	'akinsho/toggleterm.nvim',
 	version = "*",
@@ -5,14 +7,12 @@ return {
 		shade_terminal = false,
 		highlights = {
 			NormalFloat = {
-				link = "ToggleTermNormal",
+				guifg = colors.fg_dark,
+				guibg = colors.bg_dark,
 			},
-			NormalBorder = {
-				link = "ToggleTermBorder"
-			}
 		},
 		float_opts = {
-			border = "single",
+			border = "solid",
 		}
-	}
+	},
 }
