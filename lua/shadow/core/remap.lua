@@ -106,12 +106,13 @@ keymap.set({ "n", "i" }, "<F2>", vim.lsp.buf.rename)
 -- Snacks Zen
 keymap.set("n", "<C-z>", function() require("snacks").zen() end, nopts)
 
+-- File Explorer
+keymap.set("n", "<leader>e", function() require("snacks").picker.explorer() end, nopts)
+keymap.set({ "i", "n" }, "<C-b>", function() require("snacks").picker.explorer() end, nopts)
+
 -- ToggleTerm
 keymap.set({ "n", "x", "t", "i" }, "<C-t>", "<cmd>ToggleTerm direction=float<Return>", nopts)
 
--- NvimTree
-keymap.set("n", "<leader>e", ":NvimTreeToggle<Return>", nopts)
-keymap.set({ "i", "n" }, "<C-b>", ":NvimTreeToggle<Return>", nopts)
 
 -- Obsidian
 keymap.set("n", "<leader>os", ":Obsidian quick_switch<CR>")
