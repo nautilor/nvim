@@ -1,4 +1,6 @@
-local colors = require("tokyonight.colors").setup()
+local colors = require("tokyonight.colors").setup({
+	style = "night",
+})
 
 return {
 	'akinsho/toggleterm.nvim',
@@ -8,7 +10,7 @@ return {
 		highlights = {
 			NormalFloat = {
 				guifg = colors.fg_dark,
-				guibg = colors.bg_dark,
+				guibg = colors.bg_float,
 			},
 		},
 		float_opts = {
