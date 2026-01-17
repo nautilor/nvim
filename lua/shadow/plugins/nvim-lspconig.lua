@@ -17,7 +17,8 @@ return {
 			"eslint",
 			"clangd",
 			"lua_ls",
-			"copilot_language_server"
+			"copilot_language_server",
+			"qmlls"
 		})
 
 		vim.api.nvim_create_autocmd("FileType", {
