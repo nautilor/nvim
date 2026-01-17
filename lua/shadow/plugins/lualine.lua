@@ -19,7 +19,7 @@ return {
 						return vim.api.nvim_get_mode().mode == "t" and ""
 								or ""
 					end,
-					separator = { left = "" }
+					separator = { left = "" }
 				},
 				{
 					"mode",
@@ -63,7 +63,7 @@ return {
 					fmt = function(location)
 						return location:gsub("%s+", "")
 					end,
-					separator = { right = "", left = "" }
+					separator = { right = "", left = "" }
 				},
 			},
 		},
