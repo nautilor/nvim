@@ -44,7 +44,14 @@ return {
 				}
 			}
 		},
-		picker = { enabled = true },
+		picker = {
+			enabled = true,
+			sources = {
+				explorer = {
+					auto_close = true,
+				},
+			},
+		},
 		bigfile = { enabled = true },
 		quickfile = { enabled = true },
 		scroll = { enabled = true },
