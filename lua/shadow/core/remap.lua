@@ -1,8 +1,6 @@
 local keymap = vim.keymap
 local opts = { remap = true, silent = true }
 local nopts = { noremap = true, silent = true }
-local term_opts = { silent = true }
-
 local function smart_close()
 	if #vim.api.nvim_list_wins() > 1 then
 		vim.cmd("close")
