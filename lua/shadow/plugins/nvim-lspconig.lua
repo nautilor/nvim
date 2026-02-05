@@ -18,7 +18,8 @@ return {
 			"clangd",
 			"lua_ls",
 			"copilot_language_server",
-			"qmlls"
+			"qmlls",
+			"tailwindcss",
 		})
 
 		vim.api.nvim_create_autocmd("FileType", {
