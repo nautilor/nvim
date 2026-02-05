@@ -60,7 +60,7 @@ return {
 		zen = {
 			enabled = true,
 			center = true,
-			toggles = { dim = false }
+			toggles = { dim = true }
 		},
 	},
 }
