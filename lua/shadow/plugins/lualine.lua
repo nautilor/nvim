@@ -29,6 +29,7 @@ return {
 			lualine_b = {
 				{
 					"branch",
+					icon = { "", align = "left" }
 				},
 				{
 					"diff",
@@ -41,12 +42,21 @@ return {
 			},
 			lualine_y = {
 				{
-					"filetype",
-					icon_only = true,
-					separator = { left = "" }
+					"filename",
+					path = 1,
+					fmt = function(filename)
+						if filename == "" then
+							return "[No Name]"
+						end
+						local parts = vim.split(filename, "/")
+						if #parts > 1 then
+							return parts[#parts - 1] .. "/" .. parts[#parts]
+						else
+							return filename
+						end
+					end,
 				},
-				{ "filename", icon_only = true, },
-				{ "progress", icon_only = true, },
+				{ "progress", icon_only = false, },
 			},
 			lualine_z = {
 				{
@@ -67,35 +77,5 @@ return {
 				},
 			},
 		},
-		inactive_sections = {
-			lualine_a = {
-				{ "filename" },
-			},
-			lualine_b = {
-			},
-			lualine_c = {},
-			lualine_x = {},
-			lualine_z = { "location" },
-		},
 	}
 }
-
--- 	rosewater = "#f5e0dc",
--- 	flamingo = "#f2cdcd",
--- 	pink = "#f5c2e7",
--- 	mauve = "#cba6f7",
--- 	red = "#f38ba8",
--- 	maroon = "#eba0ac",
--- 	peach = "#fab387",
--- 	yellow = "#f9e2af",
--- 	green = "#a6e3a1",
--- 	teal = "#94e2d5",
--- 	sky = "#89dceb",
--- 	sapphire = "#74c7ec",
--- 	blue = "#89b4fa",
--- 	lavender = "#b4befe",
--- 	text = "#cdd6f4",
--- 	surface0 = "#313244",
--- 	base = "#1e1e2e",
--- 	mantle = "#181825",
--- 	crust = "#11111b",
