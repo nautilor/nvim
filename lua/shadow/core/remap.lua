@@ -82,6 +82,7 @@ keymap.set("n", "<C-w><C-l>", function() require("tmux").move_left() end, nopts)
 
 -- Diagnostic
 keymap.set("n", "<C-j>", vim.diagnostic.goto_next, nopts)
+keymap.set("n", "<C-d>", ":Trouble diagnostics toggle<CR>", nopts)
 
 -- LazyGit
 keymap.set("n", "<C-l>", ":LazyGit<Return>", nopts)
