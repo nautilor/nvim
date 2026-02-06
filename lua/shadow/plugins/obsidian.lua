@@ -4,7 +4,7 @@ return {
 	ft = "markdown",
 	lazy = false,
 	---@module 'obsidian'
-	---@type obsidian.config
+	---@type table
 	opts = {
 		note_id_func = function(title)
 			return title
