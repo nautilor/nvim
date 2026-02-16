@@ -106,7 +106,8 @@ keymap.set({ "n", "i" }, "<F2>", vim.lsp.buf.rename)
 keymap.set("n", "<C-z>", function() require("snacks").zen() end, nopts)
 
 -- File Explorer
-keymap.set("n", "<leader>e", function() require("snacks").picker.explorer() end, nopts)
+keymap.set("n", "<leader>w", function() require("snacks").picker.explorer() end, nopts)
+keymap.set("n", "<leader>e", ":Oil<CR>", nopts)
 keymap.set({ "i", "n" }, "<C-b>", function() require("snacks").picker.explorer() end, nopts)
 
 -- ToggleTerm
