@@ -13,6 +13,10 @@ end
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+-- center movement
+keymap.set("n", "j", "jzz", opts)
+keymap.set("n", "k", "kzz", opts)
+
 -- Disable F1 & q
 keymap.set("n", "q", "")
 keymap.set({ "n", "i" }, "<F1>", "")
@@ -40,11 +44,12 @@ keymap.set({ "n", "x" }, "<C-a>", "gg<S-v>G")
 keymap.set("i", "<C-a>", "<Esc>gg<S-v>G")
 
 -- Quit insert mode quickly
-keymap.set("i", "jk", "<Esc>")
+keymap.set("i", "jj", "<Esc>")
 
 -- Close buffer/window
 keymap.set("n", "<leader>q", ":q<Return>", nopts)
-keymap.set("n", "<leader><C-q>", ":q!<Return>", nopts)
+keymap.set("n", "<leader>!", ":q!<Return>", nopts)
+keymap.set("n", "<leader>1", ":q!<Return>", nopts)
 
 -- Move X lines when using shift+down/up
 keymap.set({ "n", "v" }, "<S-Down>", "3j", opts)
