@@ -5,6 +5,8 @@ return {
 	dependencies = { { "nvim-mini/mini.icons", opts = {} } },
 	-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
 	opts = {
+		default_file_explorer = true,
+		delete_to_trash = true,
 		keymaps = {
 			["g?"] = { "actions.show_help", mode = "n" },
 			["<CR>"] = "actions.select",
