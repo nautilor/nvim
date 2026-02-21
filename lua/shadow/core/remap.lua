@@ -39,10 +39,6 @@ keymap.set("n", "<C-s>", ":w<Return>")
 keymap.set("i", "<C-s>", "<Esc>:w<Return>a")
 keymap.set("v", "<C-s>", "<Esc>:w<Return>gv")
 
--- Select all
-keymap.set({ "n", "x" }, "<C-a>", "gg<S-v>G")
-keymap.set("i", "<C-a>", "<Esc>gg<S-v>G")
-
 -- Quit insert mode quickly
 keymap.set("i", "jj", "<Esc>")
 
@@ -50,13 +46,13 @@ keymap.set("i", "jj", "<Esc>")
 keymap.set("n", "<leader>q", ":q<Return>", nopts)
 keymap.set("n", "<leader>!", ":q!<Return>", nopts)
 keymap.set("n", "<leader>1", ":q!<Return>", nopts)
+keymap.set("n", "<C-w>c", smart_close, nopts)
 
 -- Move X lines when using shift+down/up
 keymap.set({ "n", "v" }, "<S-Down>", "3j", opts)
 keymap.set({ "n", "v" }, "<S-Up>", "3k", opts)
 
 -- Comment code
-keymap.set("n", "<C-_>", "gcc", opts)
 keymap.set("x", "<C-_>", "gc", opts)
 keymap.set("n", "<C-/>", "gcc", opts)
 keymap.set("x", "<C-/>", "gc", opts)
@@ -75,25 +71,14 @@ keymap.set("n", "<leader>gd", ":CodeDiff file HEAD<Return>", nopts)
 -- Split
 keymap.set("n", "sv", ":split<Return>", nopts)
 keymap.set("n", "ss", ":vsplit<Return>", nopts)
-keymap.set("n", "wd", "<C-w><C-w>", opts)
 keymap.set("n", "sd", smart_close, nopts)
 keymap.set("n", "sk", ":bp | bd #<Return>", nopts)
-keymap.set("n", "<C-w><C-d>", "<C-w>q", nopts)
-keymap.set("n", "<C-w><C-d>", ":bp | bd #<Return>", nopts)
-keymap.set("n", "<C-w><C-j>", function() require("tmux").move_right() end, nopts)
-keymap.set("n", "<C-w><C-i>", function() require("tmux").move_top() end, nopts)
-keymap.set("n", "<C-w><C-k>", function() require("tmux").move_bottom() end, nopts)
-keymap.set("n", "<C-w><C-l>", function() require("tmux").move_left() end, nopts)
 
 -- Diagnostic
 keymap.set("n", "<C-j>", vim.diagnostic.goto_next, nopts)
 
 -- LazyGit
 keymap.set("n", "<C-l>", ":LazyGit<Return>", nopts)
-
--- Go back and forward from jumps
-keymap.set("n", "<C-w>b", "<C-o>", nopts)
-keymap.set("n", "<C-w>f", "<C-i>", nopts)
 
 -- Snacks Picker
 keymap.set({ "i", "n" }, "<C-o>", function() require("snacks").picker.files() end, nopts)
