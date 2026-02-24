@@ -82,8 +82,8 @@ keymap.set("n", "<C-l>", ":LazyGit<Return>", nopts)
 
 -- Snacks Picker
 keymap.set({ "i", "n" }, "<C-o>", function() require("snacks").picker.files() end, nopts)
-keymap.set({ "i", "n" }, "<C-f>", function() require("snacks").picker.grep() end, nopts)
-keymap.set("n", "<leader>bb", function() require("snacks").picker.buffers() end, nopts)
+keymap.set({ "i", "n" }, "<C-f>", function() require("snacks").picker.grep({ toggle = true }) end, nopts)
+keymap.set({ "i", "n" }, "<C-b>", function() require("snacks").picker.buffers({ toggle = true }) end, nopts)
 
 -- LSP
 keymap.set("n", "gd", function() require("snacks").picker.lsp_definitions() end, nopts)
@@ -97,7 +97,7 @@ keymap.set("n", "<C-z>", function() require("snacks").zen() end, nopts)
 -- File Explorer
 keymap.set("n", "<leader>w", function() require("snacks").picker.explorer() end, nopts)
 keymap.set("n", "<leader>e", ":Oil<CR>", nopts)
-keymap.set({ "i", "n" }, "<C-b>", function() require("snacks").picker.explorer() end, nopts)
+-- keymap.set({ "i", "n" }, "<C-b>", function() require("snacks").picker.explorer() end, nopts)
 
 -- ToggleTerm
 keymap.set({ "n", "x", "t", "i" }, "<C-t>", "<cmd>ToggleTerm direction=float<Return>", nopts)
