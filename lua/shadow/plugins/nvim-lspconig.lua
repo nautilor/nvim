@@ -19,7 +19,6 @@ return {
 			"lua_ls",
 			"copilot_language_server",
 			"qmlls",
-			"tailwindcss",
 		})
 
 		vim.api.nvim_create_autocmd("FileType", {
