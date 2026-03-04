@@ -48,16 +48,15 @@ return {
 					win = {
 						list = {
 							keys = {
-								["<S-Enter>"] = { { "pick_win", "jump" }, mode = { "n", "i" } },
 								["a"] = "explorer_add",
 								["d"] = "explorer_del",
 								["r"] = "explorer_rename",
 								["c"] = "explorer_copy",
 								["p"] = "explorer_paste",
 								["u"] = "explorer_update",
-								["<C-t>"] = "terminal",
 								["x"] = "explorer_move",
 								["y"] = "explorer_yank",
+								["O"] = { { "pick_win", "jump" }, mode = { "n", "i" } },
 							}
 						}
 					}
