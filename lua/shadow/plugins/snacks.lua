@@ -43,12 +43,29 @@ return {
 		picker = {
 			actions = {
 				smart_open = function(picker, item)
-					if item.type ~= "directory" then
+					if not item.dir then
 						local ok = picker:action({ "pick_win", "jump" })
 						if ok then return end
 					end
 					picker:action({ "confirm" })
 				end
+			},
+			win = {
+				input = {
+					keys = {
+						["<CR>"] = {
+							{
+								"smart_open"
+							},
+							mode = { "n", "i" }
+						},
+					},
+				},
+				list = {
+					keys = {
+						["<CR>"] = { "smart_open" }
+					},
+				},
 			},
 			enabled = true,
 			sources = {
