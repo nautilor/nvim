@@ -1,18 +1,3 @@
-local function choose_picker_action(source)
-	local Snacks = require("snacks")
-	local explorer = Snacks.picker.get({ source = source })
-	if #explorer == 0 then return end
-	local node = explorer[1]
-	local cursor = node.list.cursor
-	local item = node.finder.items[cursor]
-	if item == nil then return end
-	if item.type ~= "directory" then
-		local ok = node:action({ "pick_win", "jump" })
-		if ok then return end
-	end
-	node:action({ "confirm" })
-end
-
 return {
 	"folke/snacks.nvim",
 	priority = 1000,
@@ -56,6 +41,15 @@ return {
 			}
 		},
 		picker = {
+			actions = {
+				smart_open = function(picker, item)
+					if item.type ~= "directory" then
+						local ok = picker:action({ "pick_win", "jump" })
+						if ok then return end
+					end
+					picker:action({ "confirm" })
+				end
+			},
 			enabled = true,
 			sources = {
 				explorer = {
@@ -71,9 +65,7 @@ return {
 								["u"] = "explorer_update",
 								["x"] = "explorer_move",
 								["y"] = "explorer_yank",
-								["<CR>"] = function()
-									choose_picker_action("explorer")
-								end
+								["<CR>"] = "smart_open"
 							}
 						}
 					}
