@@ -19,6 +19,7 @@ return {
 			"lua_ls",
 			"copilot_language_server",
 			"qmlls",
+			"rust_analyzer",
 		})
 
 		vim.api.nvim_create_autocmd("FileType", {
