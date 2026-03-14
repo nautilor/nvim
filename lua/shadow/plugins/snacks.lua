@@ -11,6 +11,22 @@ return {
 		-- <-----------------------> --
 		dashboard = {
 			enabled = true,
+			sections = {
+				{ section = "header" },
+				{ section = "keys",  gap = 1, padding = 1 },
+				{
+					title = "──────────────────────────────────────────────────────────────\n",
+					section = "terminal",
+					enabled = function()
+						local Snacks = require("snacks")
+						return Snacks.git.get_root() ~= nil
+					end,
+					cmd = "git status --short --branch",
+					padding = 1,
+					ttl = 5 * 60,
+					indent = 3,
+				},
+			},
 			preset = {
 				header = [[
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⡶⠿⠿⠷⣶⣄⠀⠀⠀⠀⠀
