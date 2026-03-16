@@ -2,6 +2,7 @@ return {
 	'neovim/nvim-lspconfig',
 	dependencies = { 'saghen/blink.cmp', 'mfussenegger/nvim-jdtls' },
 	config = function()
+		local HOME = os.getenv("HOME")
 		vim.lsp.config("lua_ls", {
 			settings = {
 				Lua = {
@@ -11,6 +12,13 @@ return {
 				}
 			}
 		})
+
+		vim.lsp.config("dartls", {
+			cmd = { HOME .. "/.local/flutter/bin/dart", "language-server", "--protocol=lsp" },
+			filetypes = { "dart" },
+			root_dir = vim.fs.dirname(vim.fs.find({ "pubspec.yaml", ".git" }, { upward = true })[1]),
+		})
+
 		vim.lsp.enable({
 			"pyright",
 			"ts_ls",
@@ -20,27 +28,27 @@ return {
 			"copilot_language_server",
 			"qmlls",
 			"rust_analyzer",
+			"dartls",
 		})
 
 		vim.api.nvim_create_autocmd("FileType", {
 			pattern = "java",
 			callback = function()
 				local jdtls = require("jdtls")
-				local home = os.getenv("HOME")
 				local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-				local workspace_dir = home .. "/.local/share/jdtls-workspace/" .. project_name
+				local workspace_dir = HOME .. "/.local/share/jdtls-workspace/" .. project_name
 
 				-- Build bundles, filtering out non-OSGi JARs
 				local bundles = {}
 
 				-- Java debug adapter from Mason
 				vim.list_extend(bundles,
-					vim.split(vim.fn.glob(home .. "/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/*.jar"),
+					vim.split(vim.fn.glob(HOME .. "/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/*.jar"),
 						"\n"))
 
 				-- Java test from Mason - filter out problematic JARs
 				local test_bundles = vim.split(
-					vim.fn.glob(home .. "/.local/share/nvim/mason/packages/java-test/extension/server/*.jar"), "\n")
+					vim.fn.glob(HOME .. "/.local/share/nvim/mason/packages/java-test/extension/server/*.jar"), "\n")
 				for _, bundle in ipairs(test_bundles) do
 					-- Exclude JARs that aren't proper OSGi bundles
 					if not bundle:match("com.microsoft.java.test.runner") and
@@ -54,13 +62,13 @@ return {
 					return bundle ~= ""
 				end, bundles)
 
-				local lombok_jar = home .. "/.local/share/nvim/mason/share/jdtls/lombok.jar"
+				local lombok_jar = HOME .. "/.local/share/nvim/mason/share/jdtls/lombok.jar"
 
 				local config = {
 					cmd = {
 						'jdtls',
 						"-configuration",
-						home .. "/.local/share/nvim/mason/packages/jdtls/config_linux",
+						HOME .. "/.local/share/nvim/mason/packages/jdtls/config_linux",
 						'-data', workspace_dir,
 						'--jvm-arg=-javaagent:' .. lombok_jar
 					},
