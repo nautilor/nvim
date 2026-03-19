@@ -44,14 +44,12 @@ function M.mark_file()
 	for i, m in ipairs(marks) do
 		if m.file == file and m.line == line and m.col == col then
 			table.remove(marks, i)
-			vim.notify("multimark: removed " .. mark_label(m, i), vim.log.levels.INFO)
 			return
 		end
 	end
 
 	local mark = { file = file, line = line, col = col, buf = buf }
 	table.insert(marks, mark)
-	vim.notify("multimark: marked " .. mark_label(mark, #marks), vim.log.levels.INFO)
 end
 
 -- Jump to the next mark (cycles through the list)
@@ -85,11 +83,6 @@ function M.jump_mark()
 	if not ok then
 		vim.notify("multimark: could not restore cursor position", vim.log.levels.WARN)
 	end
-
-	vim.notify(
-		string.format("multimark: %d/%d  %s", current_idx, #marks, mark_label(m, current_idx)),
-		vim.log.levels.INFO
-	)
 end
 
 -- List all current marks (for debugging / inspection)
@@ -109,7 +102,6 @@ end
 function M.clear_marks()
 	marks = {}
 	current_idx = nil
-	vim.notify("multimark: all marks cleared", vim.log.levels.INFO)
 end
 
 -- ---------------------------------------------------------------------------
@@ -155,12 +147,19 @@ function M.delete_marks_ui()
 	refresh()
 
 	-- Floating window
-	local width            = math.min(90, vim.o.columns - 4)
-	local height           = math.min(#snapshot + 2, vim.o.lines - 6)
-	local row              = math.floor((vim.o.lines - height) / 2)
-	local col              = math.floor((vim.o.columns - width) / 2)
+	local width       = math.min(90, vim.o.columns - 4)
+	local height      = math.min(#snapshot + 2, vim.o.lines - 6)
+	local row         = math.floor((vim.o.lines - height) / 2)
+	local col         = math.floor((vim.o.columns - width) / 2)
 
-	local win              = vim.api.nvim_open_win(buf, true, {
+	-- Tokyo Night float background
+	local tn_float_hl = "MultiMarkFloatDelete"
+	vim.api.nvim_set_hl(0, tn_float_hl, { bg = "#1f2335", fg = "#c0caf5" })
+	vim.api.nvim_set_hl(0, "MultiMarkBorder", { fg = "#29a4bd", bg = "#1f2335" })
+	vim.api.nvim_set_hl(0, "MultiMarkTitle", { fg = "#1f2335", bg = "#29a4bd", bold = true })
+	vim.api.nvim_set_hl(0, "MultiMarkCursorLn", { bg = "#292e42" })
+
+	local win                = vim.api.nvim_open_win(buf, true, {
 		relative  = "editor",
 		width     = width,
 		height    = height,
@@ -168,22 +167,27 @@ function M.delete_marks_ui()
 		col       = col,
 		style     = "minimal",
 		border    = "solid",
-		title     = " multimark: delete  (<Tab> select · d delete · q quit) ",
+		title     = "  multimark: delete  [<Tab> select · d delete · q quit] ",
 		title_pos = "center",
 	})
-	vim.wo[win].cursorline = true
-	vim.wo[win].wrap       = false
+	vim.wo[win].cursorline   = true
+	vim.wo[win].wrap         = false
+	vim.wo[win].winhighlight =
+	"Normal:MultiMarkFloatDelete,FloatBorder:MultiMarkBorder,FloatTitle:MultiMarkTitle,CursorLine:MultiMarkCursorLn"
 
-	-- Syntax highlights
+
+	-- Tokyo Night syntax highlights
 	vim.cmd([[
     syntax match MultiMarkSelected /^» .*/
+    syntax match MultiMarkNormal   /^  .*/
     syntax match MultiMarkIndex    /\[\d\+\]/
     syntax match MultiMarkFile     /\]\s\+\zs[^:]\+/
     syntax match MultiMarkPos      /:\d\+:\d\+/
-    highlight default MultiMarkSelected guifg=Yellow gui=bold
-    highlight default link MultiMarkIndex  Number
-    highlight default link MultiMarkFile   String
-    highlight default link MultiMarkPos    Constant
+    highlight MultiMarkSelected guifg=#bb9af7 guibg=#292e42 gui=bold
+    highlight MultiMarkNormal   guifg=#a9b1d6
+    highlight MultiMarkIndex    guifg=#7aa2f7 gui=bold
+    highlight MultiMarkFile     guifg=#7dcfff
+    highlight MultiMarkPos      guifg=#9ece6a
   ]])
 
 	local opts = { buffer = buf, nowait = true, silent = true }
@@ -215,22 +219,135 @@ function M.delete_marks_ui()
 		if current_idx and current_idx > #marks then
 			current_idx = #marks > 0 and #marks or nil
 		end
-		vim.notify(
-			string.format("multimark: %d mark(s) removed, %d remaining", count, #marks),
-			vim.log.levels.INFO
-		)
 		vim.api.nvim_win_close(win, true)
 	end, opts)
 
-	-- q: quit without changes
-	vim.keymap.set("n", "q", function()
+	-- q / <Esc>: quit without changes
+	local function close() vim.api.nvim_win_close(win, true) end
+	vim.keymap.set("n", "q", close, opts)
+	vim.keymap.set("n", "<Esc>", close, opts)
+end
+
+-- ---------------------------------------------------------------------------
+-- Quick-jump UI  (mj)
+--
+-- Opens a floating window that assigns a letter (a-z, then A-Z) to each mark.
+-- Press the letter to instantly close the window and jump there.
+-- <Esc> or q to cancel.
+-- ---------------------------------------------------------------------------
+-- Keys ordered by ergonomic priority:
+--   1. home row (strongest fingers, no movement)
+--   2. top row
+--   3. bottom row
+--   4. uppercase of the same order (shift required, last resort)
+local JUMP_KEYS = {
+	-- home row
+	"a", "s", "d", "f", "g", "h", "j", "k", "l",
+	-- top row
+	"q", "w", "e", "r", "t", "y", "u", "i", "o", "p",
+	-- bottom row
+	"z", "x", "c", "v", "b", "n", "m",
+	-- uppercase home row
+	"A", "S", "D", "F", "G", "H", "J", "K", "L",
+	-- uppercase top row
+	"Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P",
+	-- uppercase bottom row
+	"Z", "X", "C", "V", "B", "N", "M",
+}
+
+function M.jump_marks_ui()
+	prune_closed()
+
+	if #marks == 0 then
+		vim.notify("multimark: no marks", vim.log.levels.WARN)
+		return
+	end
+
+	local snapshot = vim.deepcopy(marks)
+
+	-- Build lines:  " a  path/to/file.lua:12:4"
+	local lines = {}
+	for i, m in ipairs(snapshot) do
+		local key   = JUMP_KEYS[i] or ("?" .. i)
+		local short = vim.fn.fnamemodify(m.file, ":~:.")
+		lines[i]    = string.format(" %s  %s:%d:%d", key, short, m.line, m.col)
+	end
+
+	local buf              = vim.api.nvim_create_buf(false, true)
+	vim.bo[buf].buftype    = "nofile"
+	vim.bo[buf].bufhidden  = "wipe"
+	vim.bo[buf].swapfile   = false
+
+	vim.bo[buf].modifiable = true
+	vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+	vim.bo[buf].modifiable = false
+
+	local width            = math.min(90, vim.o.columns - 4)
+	local height           = math.min(#lines + 2, vim.o.lines - 6)
+	local row              = math.floor((vim.o.lines - height) / 2)
+	local col              = math.floor((vim.o.columns - width) / 2)
+
+	vim.api.nvim_set_hl(0, "MultiMarkFloatJump", { bg = "#1f2335", fg = "#c0caf5" })
+	vim.api.nvim_set_hl(0, "MultiMarkBorderJump", { fg = "#ff9e64", bg = "#1f2335" })
+	vim.api.nvim_set_hl(0, "MultiMarkTitleJump", { fg = "#1f2335", bg = "#ff9e64", bold = true })
+
+	local win                = vim.api.nvim_open_win(buf, true, {
+		relative  = "editor",
+		width     = width,
+		height    = height,
+		row       = row,
+		col       = col,
+		style     = "minimal",
+		border    = "solid",
+		title     = "  multimark: jump to…  [key to jump · q/<Esc> cancel] ",
+		title_pos = "center",
+	})
+	vim.wo[win].cursorline   = false
+	vim.wo[win].wrap         = false
+	vim.wo[win].winhighlight = "Normal:MultiMarkFloatJump,FloatBorder:MultiMarkBorderJump,FloatTitle:MultiMarkTitleJump"
+
+
+	-- Tokyo Night syntax highlights for jump picker
+	vim.cmd([[
+    syntax match MultiMarkJumpKey /^ \S/
+    syntax match MultiMarkFile    /\S\@<=  \zs[^:]\+/
+    syntax match MultiMarkPos     /:\d\+:\d\+/
+    highlight MultiMarkJumpKey guifg=#ff9e64 guibg=#1f2335 gui=bold
+    highlight MultiMarkFile    guifg=#7dcfff
+    highlight MultiMarkPos     guifg=#9ece6a
+  ]])
+
+	local opts = { buffer = buf, nowait = true, silent = true }
+
+	-- Helper: jump to mark and close the float
+	local function do_jump(m)
 		vim.api.nvim_win_close(win, true)
-	end, opts)
+		if vim.fn.buflisted(m.buf) ~= 1 then
+			vim.cmd("edit " .. vim.fn.fnameescape(m.file))
+			m.buf = vim.api.nvim_get_current_buf()
+		else
+			vim.api.nvim_set_current_buf(m.buf)
+		end
+		pcall(vim.api.nvim_win_set_cursor, 0, { m.line, m.col - 1 })
+	end
+
+	-- Bind each assigned letter
+	for i, m in ipairs(snapshot) do
+		local key = JUMP_KEYS[i]
+		if key then
+			vim.keymap.set("n", key, function() do_jump(m) end, opts)
+		end
+	end
+
+	-- Cancel
+	vim.keymap.set("n", "q", function() vim.api.nvim_win_close(win, true) end, opts)
+	vim.keymap.set("n", "<Esc>", function() vim.api.nvim_win_close(win, true) end, opts)
 end
 
 -- Keymaps
 vim.keymap.set("n", "mf", M.mark_file, { desc = "MultiMark: mark current position" })
-vim.keymap.set("n", "mm", M.jump_mark, { desc = "MultiMark: jump to next mark" })
+vim.keymap.set("n", "mm", M.jump_mark, { desc = "MultiMark: jump to next mark (cycle)" })
+vim.keymap.set("n", "mj", M.jump_marks_ui, { desc = "MultiMark: quick-jump picker" })
 vim.keymap.set("n", "ml", M.list_marks, { desc = "MultiMark: list all marks" })
 vim.keymap.set("n", "mc", M.clear_marks, { desc = "MultiMark: clear all marks" })
 vim.keymap.set("n", "md", M.delete_marks_ui, { desc = "MultiMark: open delete UI" })
