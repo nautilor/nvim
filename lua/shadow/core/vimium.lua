@@ -51,20 +51,34 @@ local function collect_positions(bufnr, winid)
 				method_declaration = true,
 				arrow_function = true,
 				function_item = true,
+				-- Classes / structs
 				class_definition = true,
 				class_declaration = true,
 				struct_item = true,
 				impl_item = true,
 				interface_declaration = true,
+				-- Variables
 				variable_declarator = true,
 				assignment_statement = true,
 				let_declaration = true,
 				const_declaration = true,
 				lexical_declaration = true,
+				-- Calls
 				call_expression = true,
 				call = true,
+				-- Types
 				type_alias_declaration = true,
 				type_definition = true,
+				-- Control flow
+				if_statement = true,
+				if_expression = true,
+				for_statement = true,
+				for_in_statement = true,
+				for_expression = true,
+				foreach_statement = true,
+				while_statement = true,
+				while_expression = true,
+				loop_expression = true,
 			}
 			local function walk(node)
 				if type_set[node:type()] then
