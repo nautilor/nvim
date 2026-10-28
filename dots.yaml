@@ -1,0 +1,13 @@
+nvim:
+  lua:
+    source: ./lua/
+    destination: ~/.config/nvim/lua/
+  init.lua:
+    source: ./init.lua
+    destination: ~/.config/nvim/init.lua
+  lazy-lock.json:
+    source: ./lazy-lock.json
+    destination: ~/.config/nvim/lazy-lock.json
+  .neoconf.json:
+    source: ./.neoconf.json
+    destination: ~/.config/nvim/.neoconf.json
