@@ -18,7 +18,7 @@ lua/shadow/
     latex.lua             auto-compile .tex + mupdf viewer
     lsp_preview.lua       floating LSP preview (K)
     override/             lazygit + snacks theming
-    plugins/noting/       local notes helper
+    plugins/noting/       local notes: projects, todos, daily, search
     plugins/task/         per-project .task.md task manager
 lazy-lock.json            pinned plugin versions
 ```
@@ -152,6 +152,42 @@ Active in Java buffers. Commands: `JavaRun`, `JavaRunSpring`, `JavaRunQuarkus`, 
 | `<leader>on` | New note |
 | `<leader>oo` | cd to `~/.obsidian/Notes/` |
 | `<leader>oc` | Toggle checkbox (inside a note) |
+
+### Noting (local module)
+
+Markdown notes under `~/.notes/` (override with `vim.g.noting_config = { root = "...", note_extension = "md" }`). Subfolders are projects. Each note gets YAML frontmatter (title, project, tags, created). Project is detected from the notes subfolder you are in, else from the git root of the current buffer, else prompted. Needs `ripgrep` for task/backlink/tag search.
+
+Per-project files: `<project>/notes.md` and `<project>/todo.md`, created on first use. Daily notes: `daily/YYYY-MM-DD.md`.
+
+Commands: `:Noting <sub>` with tab completion. Subcommands: `new`, `project`, `todo`, `capture`, `quick`, `daily`, `search`, `tasks`, `ptasks`, `backlinks`, `tags`, `recent`, `browse`, `projects`, `newproject`, `root`, `rename`, `link`. No argument browses notes.
+
+| Key | Action |
+|-----|--------|
+| `<leader>nn` | New note (title, project, tags) |
+| `<leader>np` | Project notes |
+| `<leader>nt` | Project todo |
+| `<leader>nc` | Capture todo into project todo |
+| `<leader>nq` | Quick timestamped line into project notes |
+| `<leader>nd` | Daily note |
+| `<leader>ns` | Grep notes |
+| `<leader>nT` / `<leader>nP` | Open tasks, all / current project (quickfix) |
+| `<leader>nb` | Backlinks to current note (quickfix) |
+| `<leader>ng` | Notes by tag (quickfix) |
+| `<leader>nr` | Recent notes |
+| `<leader>nf` / `<leader>nF` | Browse notes / pick project then browse |
+| `<leader>no` | Notes explorer |
+
+Inside a note buffer:
+
+| Key | Action |
+|-----|--------|
+| `gd` | Follow markdown link |
+| `lf` | Insert link to another note |
+| `<leader>nx` | Toggle checkbox (turns plain line into one) |
+| `]t` / `[t` | Next / previous open task |
+| `<leader>nR` | Rename note (links to it are not updated) |
+
+Disable or remap keys: `keymaps = false`, or `keymaps = { ["<leader>nn"] = false }`.
 
 ### Tasks
 
