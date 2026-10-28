@@ -1,24 +1,27 @@
+-- Customize the ui of the snacks picker to match the Tokyo Night Moon color scheme
+
+local colorscheme = require("onedark.colors")
+
 local palette = {
-	-- Base (Tokyo Night Moon)
-	bg       = 0x1A1B26, -- base background (Moon)
-	surface1 = 0x16161F, -- inset / darker panels
-	surface2 = 0x1F2030, -- raised surfaces
-	surface3 = 0x25263A, -- active / hover
+	-- Base
+	bg       = colorscheme.bg0,
+	surface1 = colorscheme.bg1,
+	surface2 = colorscheme.bg2,
+	surface3 = colorscheme.bg3,
 
 	-- Foregrounds
-	fg       = 0xC8D3F5, -- Moon foreground
-	fg_muted = 0x545C7E, -- comments / muted text
+	fg       = colorscheme.fg,
+	fg_muted = colorscheme.grey,
 
-	-- Accents (Moon-tuned)
-	primary  = 0x82AAFF, -- Moon blue
-	fun      = 0x86E1FC, -- cyan (functions)
-	special  = 0xFFC777, -- warm accent
+	-- Accents
+	primary  = colorscheme.blue,
+	fun      = colorscheme.cyan,
+	special  = colorscheme.yellow,
 
 	-- UI
-	border   = 0x3B4261,
-	black    = 0x13131B,
+	border   = colorscheme.light_grey,
+	black    = colorscheme.black,
 }
-
 
 local sethl = function(...)
 	vim.api.nvim_set_hl(0, ...)
@@ -173,6 +176,10 @@ autocmd({ "ColorScheme", "VimEnter" }, {
 		sethl("SnacksInputBorder", {
 			bg = colors.pmenu,
 			fg = colors.pmenu,
+		})
+
+		sethl("SnacksWinSeparator", {
+			fg = colors.background
 		})
 
 		sethl("SnacksPickerListCursorLine", {

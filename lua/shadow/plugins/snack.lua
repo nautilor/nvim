@@ -1,3 +1,5 @@
+-- Plugin to provide a unified interface for various features like terminal, dashboard, picker, etc.
+
 return {
 	"folke/snacks.nvim",
 	priority = 1000,
@@ -5,7 +7,13 @@ return {
 	---@type table
 	opts = {
 		input = { enabled = false },
-		terminal = { enabled = false },
+		terminal = {
+			enabled = true,
+			win = {
+				position = "float",
+				border = "solid",
+			},
+		},
 		notifier = { enabled = false },
 		scope = { enabled = false },
 		-- <-----------------------> --
@@ -28,19 +36,7 @@ return {
 				},
 			},
 			preset = {
-				header = [[
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⡶⠿⠿⠷⣶⣄⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⡿⠁⠀ ⠀⣠⡀⠙⣷⡀⠀⠀⠀
-⠀⠀⠀⡀⠀⠀⠀⠀⠀⢠⣿⠁⠀⠀⠀⠘⠿⠃⠀⢸⣿⣿⣿⣿
-⠀⣠⡿⠛⢷⣦⡀⠀⠀⠈⣿⡄⠀⠀⠀⠀⠀⠀⠀⣸⣿⣿⣿⠟
-⢰⡿⠁⠀⠀⠙⢿⣦⣤⣤⣼⣿⣄⠀⠀⠀⠀⠀⢴⡟⠛⠋⠁⠀
-⣿⠇⠀⠀⠀⠀⠀⠉⠉⠉⠉⠉⠁⠀⠀⠀⠀⠀⠈⣿⡀⠀⠀⠀
-⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⡇⠀⠀⠀
-⣿⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⡇⠀⠀⠀
-⠸⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡿⠀⠀⠀⠀
-⠀⠹⣷⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣰⡿⠁⠀⠀⠀⠀
-⠀⠀⠀⠉⠙⠛⠿⠶⣶⣶⣶⣶⣶⠶⠿⠟⠛⠉⠀⠀⠀⠀⠀⠀
- ]]
+				header = [[]]
 			}
 		},
 		animate = { enabled = true },
@@ -57,11 +53,64 @@ return {
 			}
 		},
 		picker = {
+			layouts = {
+				revscope = {
+					reverse = false,
+					layout = {
+						box = "horizontal",
+						backdrop = false,
+						width = 0.6,
+						height = 0.9,
+						border = "none",
+						{
+							box = "vertical",
+							{ win = "list",  title = " Results ", title_pos = "center", border = true },
+							{ win = "input", height = 1,          border = true,        title = "{title} {live} {flags}", title_pos = "center" },
+						},
+						{
+							win = "preview",
+							title = "{preview:Preview}",
+							width = 0.45,
+							border = true,
+							title_pos = "center",
+						},
+					},
+				}
+			},
+			layout = {
+				preset = "vscode",
+			},
+			hidden = true,
 			actions = {
+				java_explorer_add = function(picker)
+					require("shadow.core.java_core").explorer_add(picker)
+				end,
 				smart_open = function(picker, item)
+					if not item then return end
+					if item.item == "Yes" then
+						picker:action({ "confirm" })
+						return
+					end
 					if not item.dir then
-						local ok = picker:action({ "pick_win", "jump" })
-						if ok then return end
+						local can_jump = item.file or item.buf or item.pos or item.search
+						if item.file then
+							-- bail out if the file no longer exists (e.g. just deleted)
+							if not vim.uv.fs_stat(item.file) then return end
+							-- if already visible in a window, focus it directly
+							local bufnr = vim.fn.bufnr(item.file)
+							if bufnr ~= -1 then
+								local wins = vim.fn.win_findbuf(bufnr)
+								if #wins > 0 then
+									picker:close()
+									vim.fn.win_gotoid(wins[1])
+									return
+								end
+							end
+						end
+						if can_jump then
+							local ok = picker:action({ "pick_win", "jump" })
+							if ok then return end
+						end
 					end
 					picker:action({ "confirm" })
 				end
@@ -85,12 +134,17 @@ return {
 			},
 			enabled = true,
 			sources = {
+				files = { hidden = true },
 				explorer = {
+					layout = {
+						preset = "revscope",
+					},
 					auto_close = true,
+					hidden = true,
 					win = {
 						list = {
 							keys = {
-								["a"] = "explorer_add",
+								["a"] = "java_explorer_add",
 								["d"] = "explorer_del",
 								["r"] = "explorer_rename",
 								["c"] = "explorer_copy",

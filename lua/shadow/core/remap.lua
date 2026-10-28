@@ -1,6 +1,10 @@
+-- Remaps some keys to make them more convenient to use
+
 local keymap = vim.keymap
 local opts = { remap = true, silent = true }
 local nopts = { noremap = true, silent = true }
+local lsp_preview = require("shadow.core.lsp_preview")
+
 local function smart_close()
 	if #vim.api.nvim_list_wins() > 1 then
 		vim.cmd("close")
@@ -13,7 +17,7 @@ end
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-keymap.set({"x", "n", "i"}, "<C-k>", "<C-o>", nopts)
+keymap.set({ "x", "n", "i" }, "<C-k>", "<C-o>", nopts)
 
 -- center movement
 keymap.set("n", "j", "jzz", opts)
@@ -51,13 +55,15 @@ keymap.set("n", "<leader>1", ":q!<Return>", nopts)
 keymap.set("n", "<C-w>c", smart_close, nopts)
 
 -- Move X lines when using shift+down/up
-keymap.set({ "n", "v" }, "<S-Down>", "3j", opts)
-keymap.set({ "n", "v" }, "<S-Up>", "3k", opts)
+keymap.set({ "n", "v" }, "<S-Down>", "3j", nopts)
+keymap.set({ "n", "v" }, "<S-Up>", "3k", nopts)
 
 -- Comment code
 keymap.set("x", "<C-_>", "gc", opts)
+keymap.set("n", "<C-_>", "gcc", opts)
 keymap.set("n", "<C-/>", "gcc", opts)
 keymap.set("x", "<C-/>", "gc", opts)
+keymap.set({ "n", "x" }, "<C-k>", function() require("fold_imports").toggle() end, opts)
 
 -- Tabs
 keymap.set("n", "<tab>", ":bnext<Return>", nopts)
@@ -68,7 +74,7 @@ keymap.set("n", "<leader>bd", ":bd!<Return>", nopts)
 keymap.set("n", "<leader>/", ":nohlsearch<Return>", nopts)
 
 -- Code Diff current File
-keymap.set("n", "<leader>gd", ":CodeDiff file HEAD<Return>", nopts)
+keymap.set("n", "<leader>gd", ":CodeDiff HEAD<Return>", nopts)
 
 -- Split
 keymap.set("n", "sv", ":split<Return>", nopts)
@@ -85,11 +91,12 @@ keymap.set("n", "<C-l>", ":LazyGit<Return>", nopts)
 -- Snacks Picker
 keymap.set({ "i", "n" }, "<C-o>", function() require("snacks").picker.files() end, nopts)
 keymap.set({ "i", "n" }, "<C-f>", function() require("snacks").picker.grep({ toggle = true }) end, nopts)
-keymap.set({ "i", "n" }, "<C-b>", function() require("snacks").picker.buffers({ toggle = true }) end, nopts)
+keymap.set({ "n" }, "q", function() require("snacks").picker.buffers({ toggle = true }) end, nopts)
 
 -- LSP
 keymap.set("n", "gd", function() require("snacks").picker.lsp_definitions() end, nopts)
 keymap.set("n", "gf", function() require("snacks").picker.lsp_references() end, nopts)
+keymap.set("n", "K", lsp_preview.toggle, nopts)
 keymap.set("n", "<leader>r", vim.lsp.buf.rename)
 keymap.set({ "n", "i" }, "<F2>", vim.lsp.buf.rename)
 
@@ -98,11 +105,9 @@ keymap.set("n", "<C-z>", function() require("snacks").zen() end, nopts)
 
 -- File Explorer
 keymap.set("n", "<leader>e", function() require("snacks").picker.explorer() end, nopts)
-keymap.set("n", "<leader>w", ":Oil<CR>", nopts)
--- keymap.set({ "i", "n" }, "<C-b>", function() require("snacks").picker.explorer() end, nopts)
 
--- ToggleTerm
-keymap.set({ "n", "x", "t", "i" }, "<C-t>", "<cmd>ToggleTerm direction=float<Return>", nopts)
+-- Terminal
+keymap.set({ "n", "x", "t", "i" }, "<C-t>", function() require("snacks").terminal.toggle() end, nopts)
 
 
 -- Obsidian

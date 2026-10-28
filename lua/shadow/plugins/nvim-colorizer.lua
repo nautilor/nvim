@@ -1,19 +1,15 @@
-return {
-	'norcalli/nvim-colorizer.lua',
+-- Plugin to highlight color codes in the buffer
+-- If the plugin is working you should see this #FF0000 highlighted in red in the buffer
 
-	config = function()
-		require 'colorizer'.setup(
-			{ '*', },
-			{
-				RGB = true,      -- #RGB hex codes
-				RRGGBB = true,   -- #RRGGBB hex codes
-				names = false,   -- "Name" codes like Blue
-				RRGGBBAA = true, -- #RRGGBBAA hex codes
-				rgb_fn = true,   -- CSS rgb() and rgba() functions
-				hsl_fn = true,   -- CSS hsl() and hsla() functions
-				css = true,      -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-				css_fn = true,   -- Enable all CSS *functions*: rgb_fn, hsl_fn
-				mode = 'background', -- Set the display mode.
-			})
-	end
+return {
+	'brenoprata10/nvim-highlight-colors',
+	opts = {
+		render = 'background',
+		enable_hex = true,
+		enable_short_hex = true,
+		enable_rgb = true,
+		enable_hsl = true,
+		enable_css_variables = false,
+		enable_named_colors = false,
+	},
 }

@@ -1,3 +1,5 @@
+-- Basic Neovim configuration override
+
 vim.wo.number = true
 vim.opt.relativenumber = true
 vim.opt.swapfile = false
@@ -10,3 +12,6 @@ vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
 vim.opt.conceallevel = 1
 vim.opt.cmdheight = 0
+vim.opt.list = true
+vim.opt.listchars = { tab = " ", trail = "·", extends = "", precedes = "", nbsp = "○" }
+vim.opt.fillchars:append({ eob = " ", vert = " ", horiz = " ", horizup = " ", horizdown = " ", verthoriz = " " })
