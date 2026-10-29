@@ -129,6 +129,26 @@ function M.toggle_checkbox()
 	vim.api.nvim_buf_set_lines(0, row - 1, row, false, { prefix .. next_state .. rest })
 end
 
+-- Open the markdown link under the cursor; otherwise fall back to LSP definition.
+function M.follow_link()
+	local col = vim.api.nvim_win_get_cursor(0)[2]
+	local line = vim.api.nvim_get_current_line()
+	for s, target, e in line:gmatch("()%[[^%]]*%]%(([^)]+)%)()") do
+		if col >= s - 1 and col <= e - 2 then
+			target = target:gsub("#.*$", "")
+			local dir = vim.fs.dirname(vim.fs.normalize(vim.api.nvim_buf_get_name(0)))
+			local path = vim.fs.normalize(vim.fs.joinpath(dir, target))
+			if vim.uv.fs_stat(path) then
+				vim.cmd.edit(vim.fn.fnameescape(path))
+			else
+				notify("linked file not found: " .. target, vim.log.levels.WARN)
+			end
+			return
+		end
+	end
+	vim.lsp.buf.definition()
+end
+
 local function attach(buf)
 	if not is_note(buf) then
 		return
@@ -140,11 +160,13 @@ local function attach(buf)
 	map("n", "<leader>nl", M.link_note, "link note")
 	map("n", "<leader>nc", M.new_checkbox, "new checkbox")
 	map("n", "<CR>", M.toggle_checkbox, "toggle checkbox")
+	map("n", "gd", M.follow_link, "follow link")
 end
 
 function M.setup()
 	vim.fn.mkdir(ROOT, "p")
-	vim.api.nvim_create_autocmd({ "BufEnter", "BufReadPost", "BufNewFile" }, {
+	-- LspAttach too: LSP's own buffer-local gd would otherwise override ours.
+	vim.api.nvim_create_autocmd({ "BufEnter", "BufReadPost", "BufNewFile", "LspAttach" }, {
 		group = vim.api.nvim_create_augroup("Noting", { clear = true }),
 		callback = function(args)
 			attach(args.buf)

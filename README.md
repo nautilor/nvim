@@ -163,6 +163,7 @@ Markdown notes under `~/.notes/` (created on startup). Keys are buffer-local in 
 | `<leader>nl` | Pick a note, insert `[](relative/path.md)`, cursor inside brackets in insert mode |
 | `<leader>nc` | New `- [ ] ` checkbox, insert mode after it |
 | `<CR>` | On a checkbox line: cycle `[ ]` → `[-]` → `[x]` |
+| `gd` | Follow the markdown link under the cursor (falls back to LSP definition elsewhere) |
 
 ### Tasks
 
