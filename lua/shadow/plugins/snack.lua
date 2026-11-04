@@ -83,7 +83,12 @@ return {
 			hidden = true,
 			actions = {
 				java_explorer_add = function(picker)
-					require("shadow.core.java_core").explorer_add(picker)
+					local ok, java = pcall(require, "shadow_java")
+					if ok then
+						java.explorer_add(picker)
+					else
+						require("snacks.explorer.actions").actions.explorer_add(picker)
+					end
 				end,
 				smart_open = function(picker, item)
 					if not item then return end

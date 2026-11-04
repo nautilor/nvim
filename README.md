@@ -14,7 +14,7 @@ lua/shadow/
   core/
     config.lua            editor options
     remap.lua             global keymaps
-    java_core.lua         Java run/test/debug workflow
+
     latex.lua             auto-compile .tex + mupdf viewer
     lsp_preview.lua       floating LSP preview (K)
     override/             lazygit + snacks theming
@@ -48,7 +48,7 @@ LSP servers and tools: install through `:Mason`.
 | Syntax | nvim-treesitter, nvim-ts-autotag, nvim-autopairs |
 | Formatting | conform.nvim |
 | Git | lazygit.nvim, codediff.nvim |
-| Java | nvim-java, spring-boot.nvim, nvim-dap, dap-ui, dap-virtual-text |
+| Java | shadow-java.nvim (local plugin: nvim-java, spring-boot.nvim, nvim-dap, dap-ui, dap-virtual-text) |
 | Misc | timber.nvim (log helper), todo-comments, csvview, fold-imports |
 
 ### LSP servers enabled
