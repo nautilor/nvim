@@ -1,6 +1,6 @@
 -- Customize the ui of the snacks picker to match the Tokyo Night Moon color scheme
 
-local colorscheme = require("onedark.colors")
+local colorscheme = require("matugen.colors")
 
 local palette = {
 	-- Base

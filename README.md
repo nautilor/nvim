@@ -42,7 +42,7 @@ LSP servers and tools: install through `:Mason`.
 
 | Area | Plugins |
 |------|---------|
-| Colors/UI | onedark.nvim (nautilor), lualine, markview, nvim-colorizer, tiny-inline-diagnostic |
+| Colors/UI | matugen.nvim (nautilor), lualine, markview, nvim-colorizer, tiny-inline-diagnostic |
 | Navigation | snacks.nvim (picker, explorer, terminal, zen), mini.move |
 | LSP/completion | nvim-lspconfig, mason, blink.cmp, copilot.vim |
 | Syntax | nvim-treesitter, nvim-ts-autotag, nvim-autopairs |
@@ -176,4 +176,4 @@ Opening a `.tex` buffer compiles with `latexmk -pdf` and opens/refreshes the PDF
 ## Notes
 
 - Plugin versions pinned in `lazy-lock.json`; update with `:Lazy update`.
-- Some UI colors (snacks picker, lualine) are derived from the onedark palette.
+- Some UI colors (snacks picker, lualine) are derived from the matugen palette.
